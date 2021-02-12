@@ -173,8 +173,15 @@ in
 		firefox.enable = true;
 
 		fzf = {
+			changeDirWidgetCommand = "fd -H -t=d";
+			changeDirWidgetOptions = [ "--preview 'tree -C {} | head -200'" ];
+			defaultCommand = "fd -H -t=f";
+			defaultOptions = [ "--border" "--height 40%" ];
 			enable = true;
 			enableZshIntegration = true;
+			fileWidgetCommand = "fd -H -t=f";
+			fileWidgetOptions = [ "--preview 'head {}'" ];
+			historyWidgetOptions = [ "--exact" "--sort" ];
 		};
 
 		tmux = {
