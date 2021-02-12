@@ -30,8 +30,16 @@ in
       enableZshIntegration = true;
     };
     git = {
+      delta = {
+        enable = true;
+        options = {
+          features = "side-by-side line-numbers decorations";
+          syntax-theme = "Dracula";
+          plus-style = "Syntax \"#003800\"";
+          minus-style = "Syntax \"#3f0001\"";
+        };
+      };
       enable = true;
-      delta.enable = true;
       includes = [
         { path = "home/.config/git/config"; }
         { path = "~/.config/git/config.local"; }
