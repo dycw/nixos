@@ -45,6 +45,7 @@ alias gs='git status -s'
 function nix-env-search { nix-env -qaP '.*'"$1"'.*'; }
 
 # vim
+alias v='vim'
 stty start undef     # for <C-s>, <C-q>
 stty stop undef      # ...
 setopt noflowcontrol # ...
