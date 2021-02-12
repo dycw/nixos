@@ -40,7 +40,17 @@ in
       userEmail = "d.wan@icloud.com";
       userName = "Derek Wan";
       extraConfig = {
-        core.editor = "vim";
+        branch = {
+          autoSetupMerge = "always";
+          autoSetupRebase = "always";
+        };
+        checkout.defaultRemote = "origin";
+        commit.verbose = "true";
+        color.ui = "always";
+        core = {
+          editor = "vim";
+          eol = "lf";
+        };
       };
     };
     tmux = {
