@@ -33,10 +33,10 @@ alias lal='lla'
 
 # fd
 alias fd='fd -H'
-alias fdd='fd --type=directory'
-alias fde='fd --type=executable'
-alias fdf='fd --type=file'
-alias fds='fd --type=symlink'
+alias fdd='fd -t=d'
+alias fde='fd -t=e'
+alias fdf='fd -t=f'
+alias fds='fd -t=s'
 
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
