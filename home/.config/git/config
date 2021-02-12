@@ -177,6 +177,7 @@
 
 [diff]
 	colorMoved = default
+	statGraphWidth = 10
 	tool = vimdiff
 
 [difftool]
