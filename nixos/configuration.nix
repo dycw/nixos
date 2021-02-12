@@ -194,15 +194,27 @@ in
 
 		lsd.enable = true;
 
+				# https://github.com/NixOS/nixpkgs/issues/98166#issuecomment-725319238
 		neovim = {
 			enable = true;
 
 			extraPython3Packages = (ps: with ps; [ python-language-server ]);
 
 			plugins = with pkgs.vimPlugins; [
+				vim-airline
 				vim-nix
 				vim-startify
 			];
+
+						extraConfig = ''
+							set list
+							set noexpandtab
+							set number
+							set ignorecase
+							set relativenumber
+							set shiftwidth=2
+							set tabstop=2
+						'';
 
 			viAlias = true;
 
