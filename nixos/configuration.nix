@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <home-manager/nixos>
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -65,6 +66,11 @@
     shell = pkgs.zsh;
   };
 
+  home-manager.users.derek = { pkgs, ...  }: {
+    home.packages = [ pkgs.atool pkgs.httpie  ];
+    programs.bash.enable = true;
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -80,6 +86,7 @@
     fzf
     geany
     git
+    home-manager
     hyperfine
     micro
     nodePackages.prettier
