@@ -45,7 +45,12 @@ imap jk <Esc>
 imap kj <Esc>
 
 " save
-" jj
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>
+vnoremap <C-s> <Esc>:w<CR>
+
+" quit
+nnoremap <C-q> :q<CR>
 
 " =============================================================================
 " plugins
