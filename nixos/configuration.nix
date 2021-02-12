@@ -52,10 +52,7 @@ in
         };
       };
       enable = true;
-      includes = [
-        { path = "home/.config/git/config"; }
-        { path = "~/.config/git/config.local"; }
-      ];
+      includes = [ { path = "~/.config/git/config.local"; } ];
       ignores = [ "nohup.out" ];
       userEmail = "d.wan@icloud.com";
       userName = "Derek Wan";
@@ -65,12 +62,42 @@ in
           autoSetupRebase = "always";
         };
         checkout.defaultRemote = "origin";
-        commit.verbose = "true";
+        commit.verbose = true;
         color.ui = "always";
         core = {
           editor = "vim";
           eol = "lf";
         };
+        diff = {
+          colorMoved = true;
+          statGraphWidth = 10;
+        };
+        fetch = {
+          prune = true;
+          pruneTags = true;
+        };
+        help.autoCorrect = 1;
+        log = {
+          abbrevCommit = true;
+          date = "format:%Y-%m-%d %H:%M:%S (%a)";
+        };
+        merge = {
+          conflictStyle = "diff3";
+          ff = "only";
+        };
+        pull.ff = "only";
+        push = {
+          default = "simple";
+          followTags = true;
+        };
+        rebase = {
+          abbreviateCommands = true;
+          autoSquash = true;
+          stat = true;
+        };
+        status.branch = true;
+        tag.sort = "version:refname";
+        user.useConfigOnly = true;
       };
     };
     tmux = {
