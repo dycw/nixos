@@ -15,17 +15,17 @@ function process_link {
 		if [ "$old" != "$file" ]; then
 			echo "\
 Re-directing symlink:
-       $link
-old -> $old
-new -> $file"
+       "$link"
+old -> "$old"
+new -> "$file""
 			rm "$link"
 			make_link "$file" "$link"
 		fi
 	else
 		echo "\
-Making symlink:"
-   $link"
--> $file"
+Making symlink:
+   "$link"
+-> "$file""
 		make_link "$file" "$link"
 	fi
 }
