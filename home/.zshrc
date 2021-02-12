@@ -23,6 +23,12 @@ alias ll="exa $_EXA_LONG_ARGS --git-ignore"
 alias lla="exa $_EXA_LONG_ARGS --all"
 alias lal='lla'
 
+# fd
+alias fdd='fd --type=directory'
+alias fde='fd --type=executable'
+alias fdf='fd --type=file'
+alias fds='fd --type=symlink'
+
 # fzf
 if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh
