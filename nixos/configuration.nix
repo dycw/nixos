@@ -71,6 +71,7 @@
     curl
     gitAndTools.delta
     exa
+    fd
     firefox
     fzf
     geany
