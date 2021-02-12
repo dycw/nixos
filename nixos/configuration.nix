@@ -87,6 +87,7 @@
     pdfarranger
     pipenv
     ripgrep
+    shellcheck
     shfmt
     signal-desktop
     spotify
