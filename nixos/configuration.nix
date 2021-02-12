@@ -100,6 +100,7 @@
       tmux
       vi-mode
       zsh-interactive-cd
+      zsh_reload
     )
 
     bindkey '\e[5~' history-beginning-search-backward
