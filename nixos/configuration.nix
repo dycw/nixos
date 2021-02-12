@@ -26,40 +26,45 @@ in
 			enableZshIntegration = true;
 		};
 		git = {
+			enable = true;
+			includes = [ { path = "~/.config/git/config.local"; } ];
+			ignores = [ "nohup.out" ];
+			userEmail = "d.wan@icloud.com";
+			userName = "Derek Wan";
 			delta = {
 				enable = true;
 				options = {
+					features = "side-by-side line-numbers decorations";
+					minus-style = "Syntax \"#3f0001\"";
+					plus-style = "Syntax \"#003800\"";
+					syntax-theme = "Dracula";
 					decorations = {
 						commit-decoration-style = "bold yellow box ul";
 						file-style = "bold yellow ul";
 						file-decoration-style = "none";
 						hunk-header-decoration-style = "cyan box ul";
 					};
-					features = "side-by-side line-numbers decorations";
 					line-numbers = {
 						line-numbers-left-style = "cyan";
 						line-numbers-right-style = "cyan";
 						line-numbers-minus-style = 124;
 						line-numbers-plus-style = 28;
 					};
-					minus-style = "Syntax \"#3f0001\"";
-					plus-style = "Syntax \"#003800\"";
-					syntax-theme = "Dracula";
 				};
 			};
-			enable = true;
-			includes = [ { path = "~/.config/git/config.local"; } ];
-			ignores = [ "nohup.out" ];
-			userEmail = "d.wan@icloud.com";
-			userName = "Derek Wan";
 			extraConfig = {
+				checkout.defaultRemote = "origin";
+				commit.verbose = true;
+				color.ui = "always";
+				help.autoCorrect = 1;
+				pull.ff = "only";
+				status.branch = true;
+				tag.sort = "version:refname";
+				user.useConfigOnly = true;
 				branch = {
 					autoSetupMerge = "always";
 					autoSetupRebase = "always";
 				};
-				checkout.defaultRemote = "origin";
-				commit.verbose = true;
-				color.ui = "always";
 				core = {
 					editor = "vim";
 					eol = "lf";
@@ -72,7 +77,6 @@ in
 					prune = true;
 					pruneTags = true;
 				};
-				help.autoCorrect = 1;
 				log = {
 					abbrevCommit = true;
 					date = "format:%Y-%m-%d %H:%M:%S (%a)";
@@ -81,7 +85,6 @@ in
 					conflictStyle = "diff3";
 					ff = "only";
 				};
-				pull.ff = "only";
 				push = {
 					default = "simple";
 					followTags = true;
@@ -91,9 +94,6 @@ in
 					autoSquash = true;
 					stat = true;
 				};
-				status.branch = true;
-				tag.sort = "version:refname";
-				user.useConfigOnly = true;
 			};
 		};
 		tmux = {
