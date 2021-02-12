@@ -42,8 +42,6 @@ alias fdf='fd -t=f'
 alias fds='fd -t=s'
 
 # fzf
-export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # git
