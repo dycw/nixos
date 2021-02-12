@@ -99,6 +99,7 @@
       ripgrep
       tmux
       vi-mode
+      zsh-interactive-cd
     )
 
     bindkey '\e[5~' history-beginning-search-backward
