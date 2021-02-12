@@ -184,6 +184,8 @@ in
 			historyWidgetOptions = [ "--exact" "--sort" ];
 		};
 
+		home-manager.enable = true;
+
 		tmux = {
 			aggressiveResize = true;
 			baseIndex = 1;
