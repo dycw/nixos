@@ -25,6 +25,10 @@ in
   # home-manager
   home-manager.users.derek.programs = {
     bat.enable = true;
+    broot = {
+      enable = true;
+      enableZshIntegration = true;
+    };
     git = {
       enable = true;
       delta.enable = true;
