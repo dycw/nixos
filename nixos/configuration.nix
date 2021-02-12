@@ -220,6 +220,11 @@ in
 
 		rofi.enable = true;
 
+		starship = {
+			enable = true;
+			enableZshIntegration = true;
+		};
+
 		tmux = {
 			aggressiveResize = true;
 			baseIndex = 1;
@@ -242,6 +247,8 @@ in
 			shortcut = "a";
 			terminal = "screen-256color";
 		};
+
+		zathura.enable = true;
 	};
 
 	i18n.defaultLocale = "en_US.UTF-8";
