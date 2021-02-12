@@ -206,15 +206,16 @@ in
 				vim-startify
 			];
 
-						extraConfig = ''
-							set list
-							set noexpandtab
-							set number
-							set ignorecase
-							set relativenumber
-							set shiftwidth=2
-							set tabstop=2
-						'';
+			extraConfig = ''
+				set list
+				set noexpandtab
+				set number
+				set ignorecase
+				set relativenumber
+				set shiftwidth=4
+				set softtabstop=4
+				set tabstop=4
+			'';
 
 			viAlias = true;
 
