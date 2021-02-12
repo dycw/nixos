@@ -24,6 +24,7 @@ in
 
   # home-manager
   home-manager.users.derek.programs = {
+    bat.enable = true;
     git = {
       enable = true;
       delta.enable = true;
@@ -113,7 +114,6 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    bat
     curl
     direnv
     diskonaut
