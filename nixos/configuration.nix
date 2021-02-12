@@ -68,6 +68,13 @@ in
 		};
 
 		git = {
+			aliases = {
+				current = "rev-parse --abbrev-ref HEAD";
+				publish = "!git push --set-upstream origin $(git current) && :";
+				unpublish = "!git branch -r --color=never | fzf | sed -En 's/origin\\/(.*)/\\1/p' | xargs -n 1 git push --delete origin";
+				root = "rev-parse --show-toplevel";
+			};
+
 			delta = {
 				enable = true;
 				options = {
