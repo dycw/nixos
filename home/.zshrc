@@ -45,10 +45,9 @@ alias gs='git status -s'
 function nix-env-search { nix-env -qaP '.*'"$1"'.*'; }
 
 # vim
-# to enable <C-s> and <C-q>
-stty start undef
-stty stop undef
-setopt noflowcontrol
+stty start undef     # for <C-s>, <C-q>
+stty stop undef      # ...
+setopt noflowcontrol # ...
 
 # zoxide
 eval "$(zoxide init zsh)"
