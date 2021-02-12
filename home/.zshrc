@@ -30,11 +30,9 @@ alias fdf='fd --type=file'
 alias fds='fd --type=symlink'
 
 # fzf
-if [ -f ~/.fzf.zsh ]; then
-  source ~/.fzf.zsh
-  export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" ' 
-  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-fi
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" ' 
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+[ -f ~/.fzf.zsh ] &&  source ~/.fzf.zsh
 
 # git
 alias gcm='git commit -m'
