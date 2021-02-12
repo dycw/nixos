@@ -61,8 +61,10 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.derek = {
+    description = "Derek Wan";
+    home = "/home/derek";
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" ];
     shell = pkgs.zsh;
   };
 
