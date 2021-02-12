@@ -20,6 +20,7 @@ if [ -f ~/.fzf.zsh ]; then
 fi
 
 # git
+alias gcm='git commit -m'
 alias gdc='git diff --cached'
 alias gs='git status -s'
 
