@@ -87,6 +87,7 @@
     pdfarranger
     pipenv
     ripgrep
+    shfmt
     spotify
     tealdeer
     tokei
