@@ -30,7 +30,6 @@ in
 		dropbox-cli
 		exa
 		fd
-		firefox
 		fzf
 		geany
 		git
@@ -170,8 +169,9 @@ in
 			userEmail = "d.wan@icloud.com";
 
 			userName = "Derek Wan";
-
 		};
+
+		firefox.enable = true;
 
 		tmux = {
 			aggressiveResize = true;
