@@ -24,6 +24,9 @@ alias gcm='git commit -m'
 alias gdc='git diff --cached'
 alias gs='git status -s'
 
+# nix-env
+function nix-env-search { nix-env -qaP '.*'"$1"'.*'; }
+
 # vim
 # to enable <C-s> and <C-q>
 stty start undef
