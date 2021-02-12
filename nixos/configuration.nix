@@ -30,7 +30,6 @@ in
 		dropbox-cli
 		exa
 		fd
-		fzf
 		geany
 		git
 		home-manager
@@ -172,6 +171,11 @@ in
 		};
 
 		firefox.enable = true;
+
+		fzf = {
+			enable = true;
+			enableZshIntegration = true;
+		};
 
 		tmux = {
 			aggressiveResize = true;
