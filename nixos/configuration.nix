@@ -37,7 +37,12 @@ in
     };
     tmux = {
       aggressiveResize = true;
+      baseIndex = 1;
+      disableConfirmationPrompt = true;
       enable = true;
+      historyLimit = 20000;
+      keyMode = "vi";
+      newSession = true;
       shortcut = "a";
     };
   };
