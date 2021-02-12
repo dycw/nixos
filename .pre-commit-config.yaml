@@ -9,6 +9,10 @@ repos:
     -   id: mixed-line-ending
         args: [--fix=lf]
     -   id: trailing-whitespace
+- repo: https://github.com/jumanjihouse/pre-commit-hooks
+  rev: 2.1.4  # or specific git tag
+  hooks:
+    - id: script-must-not-have-extension
 - repo: local
   hooks:
     - id: shfmt
