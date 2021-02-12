@@ -69,7 +69,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     curl
+    gitAndTools.delta
     firefox
+    fzf
     geany
     git
     nano
