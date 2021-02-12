@@ -216,6 +216,8 @@ in
 
 		pet.enable = true;
 
+		qutebrowser.enable = true;
+
 		tmux = {
 			aggressiveResize = true;
 			baseIndex = 1;
