@@ -4,11 +4,18 @@
 
 { config, pkgs, ... }:
 
+let
+  home-manager = builtins.fetchGit {
+    url = "https://github.com/nix-community/home-manager.git";
+    rev = "209566c752c4428c7692c134731971193f06b37c"; # CHANGEME
+    ref = "release-20.09";
+  };
+in
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
-      <home-manager/nixos>
+      (import "${home-manager}/nixos")
     ];
 
   # Use the systemd-boot EFI boot loader.
