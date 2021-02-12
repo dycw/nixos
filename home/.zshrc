@@ -40,12 +40,12 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 [ -f ~/.fzf.zsh ] &&  source ~/.fzf.zsh
 
 # git
-alias gap='git add -p'
+alias gap='gapa'
 unalias gcm; function gcm { git commit -m "$1" && git push; }
 alias gcop='git checkout -p'
 unalias gd; function gd { git diff ; if [ -n "$1" ]; then git add -A && git commit -m "$1" && git push; fi; } 
 function gdc { git diff --cached; if [ -n "$1" ]; then git commit -m "$1" && git push; fi; } 
-alias gs='git status -s'
+alias gs='gss'
 
 # nix-env
 function nix-env-search { nix-env -qaP '.*'"$1"'.*'; }
