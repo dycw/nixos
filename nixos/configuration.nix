@@ -14,37 +14,52 @@ in
 			(import "${home-manager}/nixos")
 		];
 
+	hardware.pulseaudio.enable = true;
+	i18n.defaultLocale = "en_US.UTF-8";
+	sound.enable = true;
 	time.timeZone = "Asia/Hong_Kong";
-
 	boot.loader = {
 		efi.canTouchEfiVariables = true;
 		systemd-boot.enable = true;
 	};
+	system.stateVersion = "20.09";
+
+	console = {
+		font = "Lat2-Terminus16";
+		keyMap = "us";
+	};
+
 	home-manager.users.derek.programs = {
 		bat.enable = true;
+
 		broot = {
 			enable = true;
 			enableZshIntegration = true;
 		};
+
 		git = {
 			enable = true;
 			includes = [ { path = "~/.config/git/config.local"; } ];
 			ignores = [ "nohup.out" ];
 			userEmail = "d.wan@icloud.com";
 			userName = "Derek Wan";
+
 			delta = {
 				enable = true;
+
 				options = {
 					features = "side-by-side line-numbers decorations";
 					minus-style = "Syntax \"#3f0001\"";
 					plus-style = "Syntax \"#003800\"";
 					syntax-theme = "Dracula";
+
 					decorations = {
 						commit-decoration-style = "bold yellow box ul";
 						file-style = "bold yellow ul";
 						file-decoration-style = "none";
 						hunk-header-decoration-style = "cyan box ul";
 					};
+
 					line-numbers = {
 						line-numbers-left-style = "cyan";
 						line-numbers-right-style = "cyan";
@@ -53,6 +68,7 @@ in
 					};
 				};
 			};
+
 			extraConfig = {
 				checkout.defaultRemote = "origin";
 				commit.verbose = true;
@@ -62,34 +78,42 @@ in
 				status.branch = true;
 				tag.sort = "version:refname";
 				user.useConfigOnly = true;
+
 				branch = {
 					autoSetupMerge = "always";
 					autoSetupRebase = "always";
 				};
+
 				core = {
 					editor = "vim";
 					eol = "lf";
 				};
+
 				diff = {
 					colorMoved = true;
 					statGraphWidth = 10;
 				};
+
 				fetch = {
 					prune = true;
 					pruneTags = true;
 				};
+
 				log = {
 					abbrevCommit = true;
 					date = "format:%Y-%m-%d %H:%M:%S (%a)";
 				};
+
 				merge = {
 					conflictStyle = "diff3";
 					ff = "only";
 				};
+
 				push = {
 					default = "simple";
 					followTags = true;
 				};
+
 				rebase = {
 					abbreviateCommands = true;
 					autoSquash = true;
@@ -97,6 +121,7 @@ in
 				};
 			};
 		};
+
 		tmux = {
 			aggressiveResize = true;
 			baseIndex = 1;
@@ -108,6 +133,7 @@ in
 			newSession = true;
 			shortcut = "a";
 			terminal = "screen-256color";
+
 			extraConfig = ''
 				bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 				set  -g status-interval 1
@@ -118,42 +144,53 @@ in
 			'';
 		};
 	};
+
 	networking = {
 		hostName = "nixos";
 		useDHCP = false;
+
 		interfaces = {
 			eno1.useDHCP = true;
 			wlp0s20f3.useDHCP = true;
 		};
 	};
 
-	# Configure network proxy if necessary
-	# networking.proxy.default = "http://user:password@proxy:port/";
-	# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+	# Enable the GNOME 3 Desktop Environment.
+	services = {
+		lorri.enable = true;
+		openssh.enable = true;
+		printing.enable = true;
 
-	# Select internationalisation properties.
-	i18n.defaultLocale = "en_US.UTF-8";
-	console = {
-		font = "Lat2-Terminus16";
-		keyMap = "us";
+		xserver = {
+			desktopManager.gnome3.enable = true;
+			displayManager.gdm.enable = true;
+			enable = true;
+		};
 	};
 
-	# Enable the GNOME 3 Desktop Environment.
-	services.xserver.enable = true;
-	services.xserver.displayManager.gdm.enable = true;
-	services.xserver.desktopManager.gnome3.enable = true;
+	systemd.user.services.dropbox = {
+		after = [ "xembedsniproxy.service" ];
+		description = "Dropbox";
+		wants = [ "xembedsniproxy.service" ];
+		wantedBy = [ "graphical-session.target" ];
 
+		environment = {
+			QT_PLUGIN_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtPluginPrefix;
+			QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
+		};
 
-	# Configure keymap in X11
-	# services.xserver.layout = "us";
-	# services.xserver.xkbOptions = "eurosign:e";
-
-	# Enable CUPS to print documents.
-	# services.printing.enable = true;
+		serviceConfig = {
+			ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
+			ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
+			KillMode = "control-group"; # upstream recommends process
+			Nice = 10;
+			PrivateTmp = true;
+			ProtectSystem = "full";
+			Restart = "on-failure";
+		};
+	};
 
 	# Enable sound.
-	sound.enable = true;
-	hardware.pulseaudio.enable = true;
 
 	# Enable touchpad support (enabled default in most desktopManager).
 	# services.xserver.libinput.enable = true;
@@ -204,25 +241,6 @@ in
 	nixpkgs.config.allowUnfree = true;
 
 
-	systemd.user.services.dropbox = {
-		description = "Dropbox";
-		after = [ "xembedsniproxy.service" ];
-		wants = [ "xembedsniproxy.service" ];
-		wantedBy = [ "graphical-session.target" ];
-		environment = {
-			QT_PLUGIN_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtPluginPrefix;
-			QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
-		};
-		serviceConfig = {
-			ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
-			ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
-			KillMode = "control-group"; # upstream recommends process
-			Restart = "on-failure";
-			PrivateTmp = true;
-			ProtectSystem = "full";
-			Nice = 10;
-		};
-	};
 
 	# Some programs need SUID wrappers, can be configured further or are
 	# started in user sessions.
@@ -265,30 +283,6 @@ in
 		source $ZSH/oh-my-zsh.sh
 	'';
 	programs.zsh.promptInit = "";
-	# programs.mtr.enable = true;
-	# programs.gnupg.agent = {
-	#		enable = true;
-	#		enableSSHSupport = true;
-	# };
 
-	# List services that you want to enable:
-	services.lorri.enable = true;
-
-	# Enable the OpenSSH daemon.
-	services.openssh.enable = true;
-
-	# Open ports in the firewall.
-	# networking.firewall.allowedTCPPorts = [ ... ];
-	# networking.firewall.allowedUDPPorts = [ ... ];
-	# Or disable the firewall altogether.
-	# networking.firewall.enable = false;
-
-	# This value determines the NixOS release from which the default
-	# settings for stateful data, like file locations and database versions
-	# on your system were taken. It‘s perfectly fine and recommended to leave
-	# this value at the release version of the first install of this system.
-	# Before changing this value read the documentation for this option
-	# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-	system.stateVersion = "20.09"; # Did you read the comment?
 
 }
