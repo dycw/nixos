@@ -82,6 +82,7 @@
     nano
     oh-my-zsh
     ripgrep
+    tealdeer
     tmux
     vim
     wget
