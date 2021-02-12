@@ -49,11 +49,10 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # git
 alias gaac='gaa && gc'
 alias gap='gapa'
-unalias gcm
-function gcm() { git commit -m "$1" && git push; }
-alias gcob='git checkout -b'
-alias gcom='git checkout master'
-alias gcop='git checkout -p'
+alias gcm='gcmsg'
+alias gcom='git checkout $(git_main_branch)'
+alias gcop='gco -p'
+alias gcd='gco develop 2>/dev/null || gcb develop'
 alias gdm='gd && gaa && gcm'
 alias gdc='gdca'
 alias gdcm='gdca && gcm'
