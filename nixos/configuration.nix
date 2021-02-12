@@ -77,6 +77,7 @@
     git
     nano
     oh-my-zsh
+    ripgrep
     tmux
     vim
     wget
