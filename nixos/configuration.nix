@@ -33,10 +33,22 @@ in
       delta = {
         enable = true;
         options = {
+          decorations = {
+            commit-decoration-style = "bold yellow box ul";
+            file-style = "bold yellow ul";
+            file-decoration-style = "none";
+            hunk-header-decoration-style = "cyan box ul";
+          };
           features = "side-by-side line-numbers decorations";
-          syntax-theme = "Dracula";
-          plus-style = "Syntax \"#003800\"";
+          line-numbers = {
+            line-numbers-left-style = "cyan";
+            line-numbers-right-style = "cyan";
+            line-numbers-minus-style = 124;
+            line-numbers-plus-style = 28;
+          };
           minus-style = "Syntax \"#3f0001\"";
+          plus-style = "Syntax \"#003800\"";
+          syntax-theme = "Dracula";
         };
       };
       enable = true;
