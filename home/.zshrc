@@ -35,6 +35,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 [ -f ~/.fzf.zsh ] &&  source ~/.fzf.zsh
 
 # git
+alias gap='git add -p'
 alias gcm='git commit -m'
 alias gdc='git diff --cached'
 alias gs='git status -s'
