@@ -40,13 +40,20 @@ in
       baseIndex = 1;
       disableConfirmationPrompt = true;
       enable = true;
-      extraConfig = "bind-key r source-file ~/.tmux.conf \; display-message '~/.tmux.conf reloaded'";
       historyLimit = 20000;
       keyMode = "vi";
       plugins = with pkgs; [ tmuxPlugins.cpu ];
       newSession = true;
       shortcut = "a";
       terminal = "screen-256color";
+      extraConfig = ''
+        bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
+        set  -g status-interval 1
+        set  -g status-left ""
+        set  -g status-right "#(TZ=Asia/Hong_Kong date \"+%%Y-%%m-%%d %%H:%%M:%%S (%%a)\")"
+        setw -g window-status-format ' #[fg=white,bold]#{window_index} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-1 | rev)#([ #{window_zoomed_flag} -eq 1  ] && echo " <Z>" || echo "") #[default]'
+        setw -g window-status-current-format '#[fg=white,bold,bg=blue,bold] #{window_index} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-1 | rev)#([ #{window_zoomed_flag} -eq 1  ] && echo " <Z>" || echo "") #[default]'
+      '';
     };
   };
 
