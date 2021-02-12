@@ -23,16 +23,21 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   # home-manager
-  home-manager.users.derek.programs.git = {
-    enable = true;
-    delta.enable = true;
-    includes = [
-      { path = "home/.config/git/config"; }
-      { path = "~/.config/git/config.local"; }
-    ];
-    ignores = [ "nohup.out" ];
-    userEmail = "d.wan@icloud.com";
-    userName = "Derek Wan";
+  home-manager.users.derek.programs = {
+    git = {
+      enable = true;
+      delta.enable = true;
+      includes = [
+        { path = "home/.config/git/config"; }
+        { path = "~/.config/git/config.local"; }
+      ];
+      ignores = [ "nohup.out" ];
+      userEmail = "d.wan@icloud.com";
+      userName = "Derek Wan";
+    };
+    tmux = {
+      enable = true;
+    };
   };
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -117,7 +122,6 @@ in
     spotify
     tealdeer
     tokei
-    tmux
     vim
     watchexec
     wget
