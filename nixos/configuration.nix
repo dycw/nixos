@@ -36,6 +36,7 @@ in
       userName = "Derek Wan";
     };
     tmux = {
+      aggressiveResize = true;
       enable = true;
       shortcut = "a";
     };
