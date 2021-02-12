@@ -193,6 +193,8 @@ in
 
 		lf.enable = true;
 
+		lsd.enable = true;
+
 		tmux = {
 			aggressiveResize = true;
 			baseIndex = 1;
