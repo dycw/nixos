@@ -71,6 +71,7 @@
     bat
     curl
     gitAndTools.delta
+    direnv
     diskonaut
     dropbox-cli
     exa
@@ -126,6 +127,7 @@
     # Customize your oh-my-zsh options here
     ZSH_THEME="robbyrussell"
     plugins=(
+      direnv
       fd
       git
       git-auto-fetch
