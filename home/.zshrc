@@ -60,6 +60,9 @@ alias gll='glgp'
 alias gpl='git pull'
 alias gs='gss'
 
+# path
+alias echo-path='echo $PATH | sed "s/:/\n/g"'
+
 # spotify
 alias spotify='nohup spotify &'
 
