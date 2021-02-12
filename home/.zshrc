@@ -51,6 +51,9 @@ alias gdc='gdca'
 alias gdcm='gdca && gcm'
 alias gs='gss'
 
+# spotify
+alias spotify='nohup spotify &'
+
 # nix-env
 function nix-env-search { nix-env -qaP '.*'"$1"'.*'; }
 
