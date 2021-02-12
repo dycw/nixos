@@ -38,7 +38,7 @@ alias fdf='fd --type=file'
 alias fds='fd --type=symlink'
 
 # fzf
-export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" ' 
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 [ -f ~/.fzf.zsh ] &&  source ~/.fzf.zsh
 
@@ -67,4 +67,3 @@ setopt noflowcontrol # ...
 # zoxide
 eval "$(zoxide init zsh)"
 export _ZO_EXCLUDE_DIRS=/tmp
-
