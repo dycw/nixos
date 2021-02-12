@@ -81,6 +81,7 @@
     hyperfine
     micro
     oh-my-zsh
+    pdfarranger
     ripgrep
     tealdeer
     tokei
