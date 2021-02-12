@@ -191,6 +191,8 @@ in
 			enable = true;
 			extraConfig = ''
 				bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
+				set  -g mouse on
+				set  -g renumber-windows on
 				set  -g status-interval 1
 				set  -g status-left ""
 				set  -g status-right "#(TZ=Asia/Hong_Kong date \"+%%Y-%%m-%%d %%H:%%M:%%S (%%a)\")"
