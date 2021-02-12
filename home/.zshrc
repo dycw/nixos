@@ -52,6 +52,7 @@ alias gap='gapa'
 unalias gcm
 function gcm() { git commit -m "$1" && git push; }
 alias gcob='git checkout -b'
+alias gcom='git checkout master'
 alias gcop='git checkout -p'
 alias gdm='gd && gaa && gcm'
 alias gdc='gdca'
