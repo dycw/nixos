@@ -33,3 +33,8 @@ function nix-env-search { nix-env -qaP '.*'"$1"'.*'; }
 stty start undef
 stty stop undef
 setopt noflowcontrol
+
+# zoxide
+eval "$(zoxide init zsh)"
+export _ZO_EXCLUDE_DIRS=/tmp
+
