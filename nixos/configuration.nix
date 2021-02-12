@@ -97,6 +97,7 @@
     plugins=(
       fd
       git
+      git-auto-fetch
       ripgrep
       tmux
       vi-mode
