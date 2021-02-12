@@ -62,6 +62,7 @@
   users.users.derek = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
   };
 
   # List packages installed in system profile. To search, run:
@@ -72,13 +73,43 @@
     geany
     git
     nano
+    oh-my-zsh
     tmux
     vim
     wget
+    zsh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
+  programs.zsh.enable = true;
+  programs.zsh.interactiveShellInit = ''
+    export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
+
+    # Customize your oh-my-zsh options here
+    ZSH_THEME="robbyrussell"
+    plugins=(git docker)
+
+    bindkey '\e[5~' history-beginning-search-backward
+    bindkey '\e[6~' history-beginning-search-forward
+
+    HISTFILESIZE=500000
+    HISTSIZE=500000
+    setopt SHARE_HISTORY
+    setopt HIST_IGNORE_ALL_DUPS
+    setopt HIST_IGNORE_DUPS
+    setopt INC_APPEND_HISTORY
+    autoload -U compinit && compinit
+    unsetopt menu_complete
+    setopt completealiases
+
+    if [ -f ~/.aliases ]; then
+      source ~/.aliases
+    fi
+
+    source $ZSH/oh-my-zsh.sh
+  '';
+  programs.zsh.promptInit = "";
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
