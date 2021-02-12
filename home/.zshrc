@@ -49,6 +49,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # git
 alias gaac='gaa && gc'
 alias gap='gapa'
+alias gbclean='git branch --color=never --merged | grep -v master | sed ''s/^[ \t ]*//;s/[ \t ]*$//'' | xargs git branch -d'
 alias gcd='gco develop 2>/dev/null || gcb develop'
 alias gcm='gcmsg'
 alias gcom='git checkout $(git_main_branch)'
