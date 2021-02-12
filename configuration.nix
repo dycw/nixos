@@ -72,7 +72,7 @@
     geany
     git
     nano
-    fmux
+    tmux
     vim
     wget
   ];
