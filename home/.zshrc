@@ -13,6 +13,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# bat
+alias cat='bat'
+
 # cd
 alias cddf='cd ~/.dotfiles'
 alias cddl='cd ~/Downloads'
