@@ -16,6 +16,7 @@ repos:
     rev: 2.1.4
     hooks:
       - id: script-must-not-have-extension
+
   - repo: local
     hooks:
       - id: prettier
@@ -24,11 +25,13 @@ repos:
         args: [-w]
         language: system
         files: \.ya?ml$
+
       - id: shellcheck
         name: shellcheck
         entry: shellcheck
         language: system
         types: [shell]
+
       - id: shfmt
         name: shfmt
         entry: shfmt
