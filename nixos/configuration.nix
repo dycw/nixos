@@ -93,7 +93,7 @@
 
     # Customize your oh-my-zsh options here
     ZSH_THEME="robbyrussell"
-    plugins=(fd git tmux vi-mode)
+    plugins=(fd git ripgrep tmux vi-mode)
 
     bindkey '\e[5~' history-beginning-search-backward
     bindkey '\e[6~' history-beginning-search-forward
