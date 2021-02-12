@@ -199,7 +199,6 @@
 [log]
 	abbrevCommit = true
 	date = format:%Y-%m-%d %H:%M:%S (%a)
-	decorate = full
 
 [merge]
 	conflictstyle = diff3
