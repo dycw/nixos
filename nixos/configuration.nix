@@ -40,10 +40,13 @@ in
       baseIndex = 1;
       disableConfirmationPrompt = true;
       enable = true;
+      extraConfig = "bind-key r source-file ~/.tmux.conf \; display-message '~/.tmux.conf reloaded'";
       historyLimit = 20000;
       keyMode = "vi";
+      plugins = with pkgs; [ tmuxPlugins.cpu ];
       newSession = true;
       shortcut = "a";
+      terminal = "screen-256color";
     };
   };
 
