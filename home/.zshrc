@@ -13,7 +13,11 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# fzf
+if [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
+  export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" ' 
+fi
 
 # vim
 # to enable <C-s> and <C-q>
