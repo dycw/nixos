@@ -19,6 +19,10 @@ if [ -f ~/.fzf.zsh ]; then
   export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" ' 
 fi
 
+# git
+alias gdc='git diff --cached'
+alias gs='git status -s'
+
 # vim
 # to enable <C-s> and <C-q>
 stty start undef
