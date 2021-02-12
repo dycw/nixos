@@ -43,6 +43,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 [ -f ~/.fzf.zsh ] &&  source ~/.fzf.zsh
 
 # git
+alias gaac='gaa && gc'
 alias gap='gapa'
 unalias gcm; function gcm { git commit -m "$1" && git push; }
 alias gcop='git checkout -p'
