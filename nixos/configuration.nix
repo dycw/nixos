@@ -1,302 +1,298 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 let
-  home-manager = builtins.fetchGit {
-    url = "https://github.com/nix-community/home-manager.git";
-    rev = "209566c752c4428c7692c134731971193f06b37c"; # CHANGEME
-    ref = "release-20.09";
-  };
+	home-manager = builtins.fetchGit {
+		url = "https://github.com/nix-community/home-manager.git";
+		rev = "209566c752c4428c7692c134731971193f06b37c";
+		ref = "release-20.09";
+	};
 in
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      (import "${home-manager}/nixos")
-    ];
+	imports =
+		[
+			./hardware-configuration.nix
+			(import "${home-manager}/nixos")
+		];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+	# Use the systemd-boot EFI boot loader.
+	boot.loader.systemd-boot.enable = true;
+	boot.loader.efi.canTouchEfiVariables = true;
 
-  # home-manager
-  home-manager.users.derek.programs = {
-    bat.enable = true;
-    broot = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-    git = {
-      delta = {
-        enable = true;
-        options = {
-          decorations = {
-            commit-decoration-style = "bold yellow box ul";
-            file-style = "bold yellow ul";
-            file-decoration-style = "none";
-            hunk-header-decoration-style = "cyan box ul";
-          };
-          features = "side-by-side line-numbers decorations";
-          line-numbers = {
-            line-numbers-left-style = "cyan";
-            line-numbers-right-style = "cyan";
-            line-numbers-minus-style = 124;
-            line-numbers-plus-style = 28;
-          };
-          minus-style = "Syntax \"#3f0001\"";
-          plus-style = "Syntax \"#003800\"";
-          syntax-theme = "Dracula";
-        };
-      };
-      enable = true;
-      includes = [ { path = "~/.config/git/config.local"; } ];
-      ignores = [ "nohup.out" ];
-      userEmail = "d.wan@icloud.com";
-      userName = "Derek Wan";
-      extraConfig = {
-        branch = {
-          autoSetupMerge = "always";
-          autoSetupRebase = "always";
-        };
-        checkout.defaultRemote = "origin";
-        commit.verbose = true;
-        color.ui = "always";
-        core = {
-          editor = "vim";
-          eol = "lf";
-        };
-        diff = {
-          colorMoved = true;
-          statGraphWidth = 10;
-        };
-        fetch = {
-          prune = true;
-          pruneTags = true;
-        };
-        help.autoCorrect = 1;
-        log = {
-          abbrevCommit = true;
-          date = "format:%Y-%m-%d %H:%M:%S (%a)";
-        };
-        merge = {
-          conflictStyle = "diff3";
-          ff = "only";
-        };
-        pull.ff = "only";
-        push = {
-          default = "simple";
-          followTags = true;
-        };
-        rebase = {
-          abbreviateCommands = true;
-          autoSquash = true;
-          stat = true;
-        };
-        status.branch = true;
-        tag.sort = "version:refname";
-        user.useConfigOnly = true;
-      };
-    };
-    tmux = {
-      aggressiveResize = true;
-      baseIndex = 1;
-      disableConfirmationPrompt = true;
-      enable = true;
-      historyLimit = 20000;
-      keyMode = "vi";
-      plugins = with pkgs; [ tmuxPlugins.cpu ];
-      newSession = true;
-      shortcut = "a";
-      terminal = "screen-256color";
-      extraConfig = ''
-        bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
-        set  -g status-interval 1
-        set  -g status-left ""
-        set  -g status-right "#(TZ=Asia/Hong_Kong date \"+%%Y-%%m-%%d %%H:%%M:%%S (%%a)\")"
-        setw -g window-status-format ' #[fg=white,bold]#{window_index} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-1 | rev)#([ #{window_zoomed_flag} -eq 1  ] && echo " <Z>" || echo "") #[default]'
-        setw -g window-status-current-format '#[fg=white,bold,bg=blue,bold] #{window_index} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-1 | rev)#([ #{window_zoomed_flag} -eq 1  ] && echo " <Z>" || echo "") #[default]'
-      '';
-    };
-  };
+	# home-manager
+	home-manager.users.derek.programs = {
+		bat.enable = true;
+		broot = {
+			enable = true;
+			enableZshIntegration = true;
+		};
+		git = {
+			delta = {
+				enable = true;
+				options = {
+					decorations = {
+						commit-decoration-style = "bold yellow box ul";
+						file-style = "bold yellow ul";
+						file-decoration-style = "none";
+						hunk-header-decoration-style = "cyan box ul";
+					};
+					features = "side-by-side line-numbers decorations";
+					line-numbers = {
+						line-numbers-left-style = "cyan";
+						line-numbers-right-style = "cyan";
+						line-numbers-minus-style = 124;
+						line-numbers-plus-style = 28;
+					};
+					minus-style = "Syntax \"#3f0001\"";
+					plus-style = "Syntax \"#003800\"";
+					syntax-theme = "Dracula";
+				};
+			};
+			enable = true;
+			includes = [ { path = "~/.config/git/config.local"; } ];
+			ignores = [ "nohup.out" ];
+			userEmail = "d.wan@icloud.com";
+			userName = "Derek Wan";
+			extraConfig = {
+				branch = {
+					autoSetupMerge = "always";
+					autoSetupRebase = "always";
+				};
+				checkout.defaultRemote = "origin";
+				commit.verbose = true;
+				color.ui = "always";
+				core = {
+					editor = "vim";
+					eol = "lf";
+				};
+				diff = {
+					colorMoved = true;
+					statGraphWidth = 10;
+				};
+				fetch = {
+					prune = true;
+					pruneTags = true;
+				};
+				help.autoCorrect = 1;
+				log = {
+					abbrevCommit = true;
+					date = "format:%Y-%m-%d %H:%M:%S (%a)";
+				};
+				merge = {
+					conflictStyle = "diff3";
+					ff = "only";
+				};
+				pull.ff = "only";
+				push = {
+					default = "simple";
+					followTags = true;
+				};
+				rebase = {
+					abbreviateCommands = true;
+					autoSquash = true;
+					stat = true;
+				};
+				status.branch = true;
+				tag.sort = "version:refname";
+				user.useConfigOnly = true;
+			};
+		};
+		tmux = {
+			aggressiveResize = true;
+			baseIndex = 1;
+			disableConfirmationPrompt = true;
+			enable = true;
+			historyLimit = 20000;
+			keyMode = "vi";
+			plugins = with pkgs; [ tmuxPlugins.cpu ];
+			newSession = true;
+			shortcut = "a";
+			terminal = "screen-256color";
+			extraConfig = ''
+				bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
+				set  -g status-interval 1
+				set  -g status-left ""
+				set  -g status-right "#(TZ=Asia/Hong_Kong date \"+%%Y-%%m-%%d %%H:%%M:%%S (%%a)\")"
+				setw -g window-status-format ' #[fg=white,bold]#{window_index} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-1 | rev)#([ #{window_zoomed_flag} -eq 1  ] && echo " <Z>" || echo "") #[default]'
+				setw -g window-status-current-format '#[fg=white,bold,bg=blue,bold] #{window_index} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-1 | rev)#([ #{window_zoomed_flag} -eq 1	] && echo " <Z>" || echo "") #[default]'
+			'';
+		};
+	};
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+	networking.hostName = "nixos"; # Define your hostname.
+	# networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
 
-  # Set your time zone.
-  time.timeZone = "Asia/Hong_Kong";
+	# Set your time zone.
+	time.timeZone = "Asia/Hong_Kong";
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.eno1.useDHCP = true;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
+	# The global useDHCP flag is deprecated, therefore explicitly set to false here.
+	# Per-interface useDHCP will be mandatory in the future, so this generated config
+	# replicates the default behaviour.
+	networking.useDHCP = false;
+	networking.interfaces.eno1.useDHCP = true;
+	networking.interfaces.wlp0s20f3.useDHCP = true;
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+	# Configure network proxy if necessary
+	# networking.proxy.default = "http://user:password@proxy:port/";
+	# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
+	# Select internationalisation properties.
+	i18n.defaultLocale = "en_US.UTF-8";
+	console = {
+		font = "Lat2-Terminus16";
+		keyMap = "us";
+	};
 
-  # Enable the GNOME 3 Desktop Environment.
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome3.enable = true;
-
-
-  # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.derek = {
-    description = "Derek Wan";
-    home = "/home/derek";
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    shell = pkgs.zsh;
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    curl
-    direnv
-    diskonaut
-    dropbox-cli
-    exa
-    fd
-    firefox
-    fzf
-    geany
-    git
-    home-manager
-    hyperfine
-    micro
-    nodePackages.prettier
-    nox
-    oh-my-zsh
-    pdfarranger
-    pipenv
-    ripgrep
-    shellcheck
-    shfmt
-    signal-desktop
-    spotify
-    tealdeer
-    tokei
-    vim
-    watchexec
-    wget
-    zoxide
-    zsh
-  ];
-  nixpkgs.config.allowUnfree = true;
+	# Enable the GNOME 3 Desktop Environment.
+	services.xserver.enable = true;
+	services.xserver.displayManager.gdm.enable = true;
+	services.xserver.desktopManager.gnome3.enable = true;
 
 
-  systemd.user.services.dropbox = {
-    description = "Dropbox";
-    after = [ "xembedsniproxy.service" ];
-    wants = [ "xembedsniproxy.service" ];
-    wantedBy = [ "graphical-session.target" ];
-    environment = {
-      QT_PLUGIN_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtPluginPrefix;
-      QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
-    };
-    serviceConfig = {
-      ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
-      ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
-      KillMode = "control-group"; # upstream recommends process
-      Restart = "on-failure";
-      PrivateTmp = true;
-      ProtectSystem = "full";
-      Nice = 10;
-    };
-  };
+	# Configure keymap in X11
+	# services.xserver.layout = "us";
+	# services.xserver.xkbOptions = "eurosign:e";
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  programs.zsh.enable = true;
-  programs.zsh.interactiveShellInit = ''
-    export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
+	# Enable CUPS to print documents.
+	# services.printing.enable = true;
 
-    # Customize your oh-my-zsh options here
-    ZSH_THEME="robbyrussell"
-    plugins=(
-      alias-finder
-      direnv
-      fd
-      git
-      git-auto-fetch
-      ripgrep
-      tmux
-      vi-mode
-      zsh-interactive-cd
-      zsh_reload
-    )
+	# Enable sound.
+	sound.enable = true;
+	hardware.pulseaudio.enable = true;
 
-    bindkey '\e[5~' history-beginning-search-backward
-    bindkey '\e[6~' history-beginning-search-forward
+	# Enable touchpad support (enabled default in most desktopManager).
+	# services.xserver.libinput.enable = true;
 
-    HISTFILESIZE=500000
-    HISTSIZE=500000
-    setopt SHARE_HISTORY
-    setopt HIST_IGNORE_ALL_DUPS
-    setopt HIST_IGNORE_DUPS
-    setopt INC_APPEND_HISTORY
-    autoload -U compinit && compinit
-    unsetopt menu_complete
-    setopt completealiases
+	# Define a user account. Don't forget to set a password with ‘passwd’.
+	users.users.derek = {
+		description = "Derek Wan";
+		home = "/home/derek";
+		isNormalUser = true;
+		extraGroups = [ "wheel" ];
+		shell = pkgs.zsh;
+	};
 
-    if [ -f ~/.aliases ]; then
-      source ~/.aliases
-    fi
+	# List packages installed in system profile. To search, run:
+	# $ nix search wget
+	environment.systemPackages = with pkgs; [
+		curl
+		direnv
+		diskonaut
+		dropbox-cli
+		exa
+		fd
+		firefox
+		fzf
+		geany
+		git
+		home-manager
+		hyperfine
+		micro
+		nodePackages.prettier
+		nox
+		oh-my-zsh
+		pdfarranger
+		pipenv
+		ripgrep
+		shellcheck
+		shfmt
+		signal-desktop
+		spotify
+		tealdeer
+		tokei
+		vim
+		watchexec
+		wget
+		zoxide
+		zsh
+	];
+	nixpkgs.config.allowUnfree = true;
 
-    source $ZSH/oh-my-zsh.sh
-  '';
-  programs.zsh.promptInit = "";
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
-  # List services that you want to enable:
-  services.lorri.enable = true;
+	systemd.user.services.dropbox = {
+		description = "Dropbox";
+		after = [ "xembedsniproxy.service" ];
+		wants = [ "xembedsniproxy.service" ];
+		wantedBy = [ "graphical-session.target" ];
+		environment = {
+			QT_PLUGIN_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtPluginPrefix;
+			QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
+		};
+		serviceConfig = {
+			ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
+			ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
+			KillMode = "control-group"; # upstream recommends process
+			Restart = "on-failure";
+			PrivateTmp = true;
+			ProtectSystem = "full";
+			Nice = 10;
+		};
+	};
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+	# Some programs need SUID wrappers, can be configured further or are
+	# started in user sessions.
+	programs.zsh.enable = true;
+	programs.zsh.interactiveShellInit = ''
+		export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+		# Customize your oh-my-zsh options here
+		ZSH_THEME="robbyrussell"
+		plugins=(
+			alias-finder
+			direnv
+			fd
+			git
+			git-auto-fetch
+			ripgrep
+			tmux
+			vi-mode
+			zsh-interactive-cd
+			zsh_reload
+		)
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.09"; # Did you read the comment?
+		bindkey '\e[5~' history-beginning-search-backward
+		bindkey '\e[6~' history-beginning-search-forward
+
+		HISTFILESIZE=500000
+		HISTSIZE=500000
+		setopt SHARE_HISTORY
+		setopt HIST_IGNORE_ALL_DUPS
+		setopt HIST_IGNORE_DUPS
+		setopt INC_APPEND_HISTORY
+		autoload -U compinit && compinit
+		unsetopt menu_complete
+		setopt completealiases
+
+		if [ -f ~/.aliases ]; then
+			source ~/.aliases
+		fi
+
+		source $ZSH/oh-my-zsh.sh
+	'';
+	programs.zsh.promptInit = "";
+	# programs.mtr.enable = true;
+	# programs.gnupg.agent = {
+	#		enable = true;
+	#		enableSSHSupport = true;
+	# };
+
+	# List services that you want to enable:
+	services.lorri.enable = true;
+
+	# Enable the OpenSSH daemon.
+	services.openssh.enable = true;
+
+	# Open ports in the firewall.
+	# networking.firewall.allowedTCPPorts = [ ... ];
+	# networking.firewall.allowedUDPPorts = [ ... ];
+	# Or disable the firewall altogether.
+	# networking.firewall.enable = false;
+
+	# This value determines the NixOS release from which the default
+	# settings for stateful data, like file locations and database versions
+	# on your system were taken. It‘s perfectly fine and recommended to leave
+	# this value at the release version of the first install of this system.
+	# Before changing this value read the documentation for this option
+	# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+	system.stateVersion = "20.09"; # Did you read the comment?
 
 }
