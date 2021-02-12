@@ -85,6 +85,7 @@
     nox
     oh-my-zsh
     pdfarranger
+    pipenv
     ripgrep
     spotify
     tealdeer
