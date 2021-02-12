@@ -37,6 +37,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # git
 alias gap='git add -p'
 alias gcm='git commit -m'
+alias gcop='git checkout -p'
 alias gdc='git diff --cached'
 alias gs='git status -s'
 
