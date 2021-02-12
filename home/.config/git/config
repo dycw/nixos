@@ -153,6 +153,7 @@
 	ui = always
 
 [core]
+	editor = vim
 	pager = delta
 	eol = lf
 
