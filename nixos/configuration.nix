@@ -99,6 +99,7 @@
       ripgrep
       tmux
       vi-mode
+      z
       zsh-interactive-cd
       zsh_reload
     )
