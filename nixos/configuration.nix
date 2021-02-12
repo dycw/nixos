@@ -79,7 +79,7 @@
     geany
     git
     hyperfine
-    nano
+    micro
     oh-my-zsh
     ripgrep
     tealdeer
