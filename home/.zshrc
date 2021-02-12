@@ -40,12 +40,13 @@ alias fds='fd --type=symlink'
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-[ -f ~/.fzf.zsh ] &&  source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # git
 alias gaac='gaa && gc'
 alias gap='gapa'
-unalias gcm; function gcm { git commit -m "$1" && git push; }
+unalias gcm
+function gcm() { git commit -m "$1" && git push; }
 alias gcop='git checkout -p'
 alias gdm='gd && gaa && gcm'
 alias gdc='gdca'
@@ -56,7 +57,7 @@ alias gs='gss'
 alias spotify='nohup spotify &'
 
 # nix-env
-function nix-env-search { nix-env -qaP '.*'"$1"'.*'; }
+function nix-env-search() { nix-env -qaP '.*'"$1"'.*'; }
 
 # vim
 alias v='vim'

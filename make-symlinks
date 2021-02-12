@@ -1,13 +1,12 @@
 #!/run/current-system/sw/bin/zsh
 
-
-function make_link {
-  file="$1"
-  link="$2"
-  mkdir -p "$(dirname "$link")"
-  ln -s "$file" "$link"
+function make_link() {
+	file="$1"
+	link="$2"
+	mkdir -p "$(dirname "$link")"
+	ln -s "$file" "$link"
 }
-function process_link {
+function process_link() {
 	file="$1"
 	link="$2"
 	if [ -L "$link" ]; then
@@ -31,7 +30,7 @@ Making symlink:
 }
 
 root="$(git rev-parse --show-toplevel)/home/"
-while IFS= read -r file ; do
-  relative="$(realpath --relative-to="$root" "$file")"
-  process_link "$file" "$HOME/$relative"
-done <<< "$(fd -H -t=f . $root)"
+while IFS= read -r file; do
+	relative="$(realpath --relative-to="$root" "$file")"
+	process_link "$file" "$HOME/$relative"
+done <<<"$(fd -H -t=f . $root)"
