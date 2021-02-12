@@ -218,6 +218,8 @@ in
 
 		qutebrowser.enable = true;
 
+		rofi.enable = true;
+
 		tmux = {
 			aggressiveResize = true;
 			baseIndex = 1;
