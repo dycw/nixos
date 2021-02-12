@@ -71,6 +71,7 @@
     bat
     curl
     gitAndTools.delta
+    diskonaut
     exa
     fd
     firefox
