@@ -20,7 +20,7 @@ compinit
 alias cat='bat'
 
 # cd
-alias cddf='cd ~/.dotfiles'
+alias cddf='cd ~/dotfiles'
 alias cddl='cd ~/Downloads'
 alias cdw='cd ~/work'
 
