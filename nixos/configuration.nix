@@ -82,6 +82,7 @@
     git
     hyperfine
     micro
+    nox
     oh-my-zsh
     pdfarranger
     ripgrep
