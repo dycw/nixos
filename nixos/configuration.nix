@@ -14,11 +14,12 @@ in
 			(import "${home-manager}/nixos")
 		];
 
-	# Use the systemd-boot EFI boot loader.
-	boot.loader.systemd-boot.enable = true;
-	boot.loader.efi.canTouchEfiVariables = true;
+	time.timeZone = "Asia/Hong_Kong";
 
-	# home-manager
+	boot.loader = {
+		efi.canTouchEfiVariables = true;
+		systemd-boot.enable = true;
+	};
 	home-manager.users.derek.programs = {
 		bat.enable = true;
 		broot = {
@@ -117,19 +118,14 @@ in
 			'';
 		};
 	};
-
-	networking.hostName = "nixos"; # Define your hostname.
-	# networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
-
-	# Set your time zone.
-	time.timeZone = "Asia/Hong_Kong";
-
-	# The global useDHCP flag is deprecated, therefore explicitly set to false here.
-	# Per-interface useDHCP will be mandatory in the future, so this generated config
-	# replicates the default behaviour.
-	networking.useDHCP = false;
-	networking.interfaces.eno1.useDHCP = true;
-	networking.interfaces.wlp0s20f3.useDHCP = true;
+	networking = {
+		hostName = "nixos";
+		useDHCP = false;
+		interfaces = {
+			eno1.useDHCP = true;
+			wlp0s20f3.useDHCP = true;
+		};
+	};
 
 	# Configure network proxy if necessary
 	# networking.proxy.default = "http://user:password@proxy:port/";
