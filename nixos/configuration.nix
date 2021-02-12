@@ -70,6 +70,7 @@
   environment.systemPackages = with pkgs; [
     curl
     gitAndTools.delta
+    exa
     firefox
     fzf
     geany
