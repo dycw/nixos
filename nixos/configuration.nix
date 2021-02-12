@@ -26,7 +26,6 @@ in
 
 	environment.systemPackages = with pkgs; [
 		curl
-		direnv
 		diskonaut
 		dropbox-cli
 		exa
@@ -64,6 +63,12 @@ in
 
 		broot = {
 			enable = true;
+			enableZshIntegration = true;
+		};
+
+		direnv = {
+			enable = true;
+			enableNixDirenvIntegration = true;
 			enableZshIntegration = true;
 		};
 
