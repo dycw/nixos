@@ -22,6 +22,15 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # home-manager
+  home-manager.users.derek = {
+    programs.git = {
+      enable = true;
+      userName  = "Derek Wan";
+      userEmail = "d.wan@icloud.com";
+    };
+  };
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -73,11 +82,6 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     shell = pkgs.zsh;
-  };
-
-  home-manager.users.derek = { pkgs, ...  }: {
-    home.packages = [ pkgs.atool pkgs.httpie  ];
-    programs.bash.enable = true;
   };
 
   # List packages installed in system profile. To search, run:
