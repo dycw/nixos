@@ -50,7 +50,6 @@ in
 		vim
 		watchexec
 		wget
-		zoxide
 		zsh
 	];
 
@@ -249,6 +248,11 @@ in
 		};
 
 		zathura.enable = true;
+
+		zoxide = {
+			enable = true;
+			enableZshIntegration = true;
+		};
 	};
 
 	i18n.defaultLocale = "en_US.UTF-8";
