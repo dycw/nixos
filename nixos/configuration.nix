@@ -88,6 +88,7 @@
     pipenv
     ripgrep
     shfmt
+    signal-desktop
     spotify
     tealdeer
     tokei
