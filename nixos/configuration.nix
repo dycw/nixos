@@ -14,198 +14,16 @@ in
 			(import "${home-manager}/nixos")
 		];
 
-	hardware.pulseaudio.enable = true;
-	i18n.defaultLocale = "en_US.UTF-8";
-	sound.enable = true;
-	time.timeZone = "Asia/Hong_Kong";
 	boot.loader = {
 		efi.canTouchEfiVariables = true;
 		systemd-boot.enable = true;
 	};
-	system.stateVersion = "20.09";
 
 	console = {
 		font = "Lat2-Terminus16";
 		keyMap = "us";
 	};
 
-	home-manager.users.derek.programs = {
-		bat.enable = true;
-
-		broot = {
-			enable = true;
-			enableZshIntegration = true;
-		};
-
-		git = {
-			enable = true;
-			includes = [ { path = "~/.config/git/config.local"; } ];
-			ignores = [ "nohup.out" ];
-			userEmail = "d.wan@icloud.com";
-			userName = "Derek Wan";
-
-			delta = {
-				enable = true;
-
-				options = {
-					features = "side-by-side line-numbers decorations";
-					minus-style = "Syntax \"#3f0001\"";
-					plus-style = "Syntax \"#003800\"";
-					syntax-theme = "Dracula";
-
-					decorations = {
-						commit-decoration-style = "bold yellow box ul";
-						file-style = "bold yellow ul";
-						file-decoration-style = "none";
-						hunk-header-decoration-style = "cyan box ul";
-					};
-
-					line-numbers = {
-						line-numbers-left-style = "cyan";
-						line-numbers-right-style = "cyan";
-						line-numbers-minus-style = 124;
-						line-numbers-plus-style = 28;
-					};
-				};
-			};
-
-			extraConfig = {
-				checkout.defaultRemote = "origin";
-				commit.verbose = true;
-				color.ui = "always";
-				help.autoCorrect = 1;
-				pull.ff = "only";
-				status.branch = true;
-				tag.sort = "version:refname";
-				user.useConfigOnly = true;
-
-				branch = {
-					autoSetupMerge = "always";
-					autoSetupRebase = "always";
-				};
-
-				core = {
-					editor = "vim";
-					eol = "lf";
-				};
-
-				diff = {
-					colorMoved = true;
-					statGraphWidth = 10;
-				};
-
-				fetch = {
-					prune = true;
-					pruneTags = true;
-				};
-
-				log = {
-					abbrevCommit = true;
-					date = "format:%Y-%m-%d %H:%M:%S (%a)";
-				};
-
-				merge = {
-					conflictStyle = "diff3";
-					ff = "only";
-				};
-
-				push = {
-					default = "simple";
-					followTags = true;
-				};
-
-				rebase = {
-					abbreviateCommands = true;
-					autoSquash = true;
-					stat = true;
-				};
-			};
-		};
-
-		tmux = {
-			aggressiveResize = true;
-			baseIndex = 1;
-			disableConfirmationPrompt = true;
-			enable = true;
-			historyLimit = 20000;
-			keyMode = "vi";
-			plugins = with pkgs; [ tmuxPlugins.cpu ];
-			newSession = true;
-			shortcut = "a";
-			terminal = "screen-256color";
-
-			extraConfig = ''
-				bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
-				set  -g status-interval 1
-				set  -g status-left ""
-				set  -g status-right "#(TZ=Asia/Hong_Kong date \"+%%Y-%%m-%%d %%H:%%M:%%S (%%a)\")"
-				setw -g window-status-format ' #[fg=white,bold]#{window_index} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-1 | rev)#([ #{window_zoomed_flag} -eq 1  ] && echo " <Z>" || echo "") #[default]'
-				setw -g window-status-current-format '#[fg=white,bold,bg=blue,bold] #{window_index} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-1 | rev)#([ #{window_zoomed_flag} -eq 1	] && echo " <Z>" || echo "") #[default]'
-			'';
-		};
-	};
-
-	networking = {
-		hostName = "nixos";
-		useDHCP = false;
-
-		interfaces = {
-			eno1.useDHCP = true;
-			wlp0s20f3.useDHCP = true;
-		};
-	};
-
-	# Enable the GNOME 3 Desktop Environment.
-	services = {
-		lorri.enable = true;
-		openssh.enable = true;
-		printing.enable = true;
-
-		xserver = {
-			desktopManager.gnome3.enable = true;
-			displayManager.gdm.enable = true;
-			enable = true;
-		};
-	};
-
-	systemd.user.services.dropbox = {
-		after = [ "xembedsniproxy.service" ];
-		description = "Dropbox";
-		wants = [ "xembedsniproxy.service" ];
-		wantedBy = [ "graphical-session.target" ];
-
-		environment = {
-			QT_PLUGIN_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtPluginPrefix;
-			QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
-		};
-
-		serviceConfig = {
-			ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
-			ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
-			KillMode = "control-group"; # upstream recommends process
-			Nice = 10;
-			PrivateTmp = true;
-			ProtectSystem = "full";
-			Restart = "on-failure";
-		};
-	};
-
-	# Enable sound.
-
-	# Enable touchpad support (enabled default in most desktopManager).
-	# services.xserver.libinput.enable = true;
-
-	# Define a user account. Don't forget to set a password with ‘passwd’.
-	users.users.derek = {
-		description = "Derek Wan";
-		home = "/home/derek";
-		isNormalUser = true;
-		extraGroups = [ "wheel" ];
-		shell = pkgs.zsh;
-	};
-
-	# List packages installed in system profile. To search, run:
-	# $ nix search wget
 	environment.systemPackages = with pkgs; [
 		curl
 		direnv
@@ -238,9 +56,200 @@ in
 		zoxide
 		zsh
 	];
+
+	hardware.pulseaudio.enable = true;
+
+	home-manager.users.derek.programs = {
+		bat.enable = true;
+
+		broot = {
+			enable = true;
+			enableZshIntegration = true;
+		};
+
+		git = {
+			delta = {
+				enable = true;
+				options = {
+					features = "side-by-side line-numbers decorations";
+					minus-style = "Syntax \"#3f0001\"";
+					plus-style = "Syntax \"#003800\"";
+					syntax-theme = "Dracula";
+					decorations = {
+						commit-decoration-style = "bold yellow box ul";
+						file-style = "bold yellow ul";
+						file-decoration-style = "none";
+						hunk-header-decoration-style = "cyan box ul";
+					};
+					line-numbers = {
+						line-numbers-left-style = "cyan";
+						line-numbers-right-style = "cyan";
+						line-numbers-minus-style = 124;
+						line-numbers-plus-style = 28;
+					};
+				};
+			};
+
+			enable = true;
+
+			extraConfig = {
+				branch = {
+					autoSetupMerge = "always";
+					autoSetupRebase = "always";
+				};
+
+				checkout.defaultRemote = "origin";
+
+				commit.verbose = true;
+
+				color.ui = "always";
+
+				core = {
+					editor = "vim";
+					eol = "lf";
+				};
+
+				diff = {
+					colorMoved = true;
+					statGraphWidth = 10;
+				};
+
+				fetch = {
+					prune = true;
+					pruneTags = true;
+				};
+
+				help.autoCorrect = 1;
+
+				log = {
+					abbrevCommit = true;
+					date = "format:%Y-%m-%d %H:%M:%S (%a)";
+				};
+
+				merge = {
+					conflictStyle = "diff3";
+					ff = "only";
+				};
+
+				pull.ff = "only";
+
+				push = {
+					default = "simple";
+					followTags = true;
+				};
+
+				rebase = {
+					abbreviateCommands = true;
+					autoSquash = true;
+					stat = true;
+				};
+
+				status.branch = true;
+
+				tag.sort = "version:refname";
+
+				user.useConfigOnly = true;
+			};
+
+			includes = [ { path = "~/.config/git/config.local"; } ];
+
+			ignores = [ "nohup.out" ];
+
+			userEmail = "d.wan@icloud.com";
+
+			userName = "Derek Wan";
+
+		};
+
+		tmux = {
+			aggressiveResize = true;
+			baseIndex = 1;
+			disableConfirmationPrompt = true;
+			enable = true;
+			extraConfig = ''
+				bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
+				set  -g status-interval 1
+				set  -g status-left ""
+				set  -g status-right "#(TZ=Asia/Hong_Kong date \"+%%Y-%%m-%%d %%H:%%M:%%S (%%a)\")"
+				setw -g window-status-format ' #[fg=white,bold]#{window_index} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-1 | rev)#([ #{window_zoomed_flag} -eq 1  ] && echo " <Z>" || echo "") #[default]'
+				setw -g window-status-current-format '#[fg=white,bold,bg=blue,bold] #{window_index} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-1 | rev)#([ #{window_zoomed_flag} -eq 1	] && echo " <Z>" || echo "") #[default]'
+			'';
+			historyLimit = 20000;
+			keyMode = "vi";
+			plugins = with pkgs; [ tmuxPlugins.cpu ];
+			newSession = true;
+			shortcut = "a";
+			terminal = "screen-256color";
+		};
+	};
+
+	i18n.defaultLocale = "en_US.UTF-8";
+
+	networking = {
+		hostName = "nixos";
+
+		useDHCP = false;
+
+		interfaces = {
+			eno1.useDHCP = true;
+			wlp0s20f3.useDHCP = true;
+		};
+	};
+
 	nixpkgs.config.allowUnfree = true;
 
+	services = {
+		lorri.enable = true;
 
+		openssh.enable = true;
+
+		printing.enable = true;
+
+		xserver = {
+			desktopManager.gnome3.enable = true;
+			displayManager.gdm.enable = true;
+			enable = true;
+		};
+	};
+
+	sound.enable = true;
+
+	system.stateVersion = "20.09";
+
+	systemd.user.services.dropbox = {
+		after = [ "xembedsniproxy.service" ];
+
+		description = "Dropbox";
+
+		environment = {
+			QT_PLUGIN_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtPluginPrefix;
+			QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
+		};
+
+		serviceConfig = {
+			ExecStart = "${pkgs.dropbox.out}/bin/dropbox";
+			ExecReload = "${pkgs.coreutils.out}/bin/kill -HUP $MAINPID";
+			KillMode = "control-group"; # upstream recommends process
+			Nice = 10;
+			PrivateTmp = true;
+			ProtectSystem = "full";
+			Restart = "on-failure";
+		};
+
+		wants = [ "xembedsniproxy.service" ];
+
+		wantedBy = [ "graphical-session.target" ];
+	};
+
+	time.timeZone = "Asia/Hong_Kong";
+
+	users.users.derek = {
+		description = "Derek Wan";
+		home = "/home/derek";
+		isNormalUser = true;
+		extraGroups = [ "wheel" ];
+		shell = pkgs.zsh;
+	};
 
 	# Some programs need SUID wrappers, can be configured further or are
 	# started in user sessions.
