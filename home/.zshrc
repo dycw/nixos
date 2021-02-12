@@ -13,6 +13,11 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# cd
+alias cddf='cd ~/.dotfiles'
+alias cddl='cd ~/Downloads'
+alias cdw='cd ~/work'
+
 # exa
 _EXA_ARGS='--classify --group-directories-first'
 _EXA_SHORT_ARGS="$_EXA_ARGS --across"
