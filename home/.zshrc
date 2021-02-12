@@ -1,7 +1,10 @@
+# shellcheck shell=bash
+# shellcheck source=/dev/null
+
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.cache/zsh/histfile
+export HISTFILE=~/.cache/zsh/histfile
 HISTSIZE=10000
-SAVEHIST=10000
+export SAVEHIST=10000
 setopt autocd extendedglob nomatch notify
 unsetopt beep
 bindkey -v
@@ -22,13 +25,13 @@ alias cddl='cd ~/Downloads'
 alias cdw='cd ~/work'
 
 # exa
-_EXA_ARGS='--classify --group-directories-first'
-_EXA_SHORT_ARGS="$_EXA_ARGS --across"
-alias l="exa $_EXA_SHORT_ARGS --git-ignore"
-alias la="exa $_EXA_SHORT_ARGS --all"
-_EXA_LONG_ARGS="$_EXA_ARGS --git --group --header --long --time-style=long-iso"
-alias ll="exa $_EXA_LONG_ARGS --git-ignore"
-alias lla="exa $_EXA_LONG_ARGS --all"
+alias _exa_base='exa --classify --group-directories-first'
+alias _exa_short='_exa_base --across'
+alias l='_exa_short --git-ignore'
+alias la='_exa_short --all'
+alias _exa_long='_exa_base --git --group --header --long --time-style=long-iso'
+alias ll='_exa_long --git-ignore'
+alias lla='_exa_long --all'
 alias lal='lla'
 
 # fd

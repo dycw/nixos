@@ -15,6 +15,11 @@ repos:
     - id: script-must-not-have-extension
 - repo: local
   hooks:
+    - id: shellcheck
+      name: shellcheck
+      entry: shellcheck
+      language: system
+      types: [shell]
     - id: shfmt
       name: shfmt
       entry: shfmt
