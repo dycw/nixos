@@ -23,12 +23,17 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   # home-manager
-  home-manager.users.derek.programs.git.enable = true;
-  home-manager.users.derek.programs.git.delta.enable = true;
-  home-manager.users.derek.programs.git.includes = [ "~/.config/git/config.local" ]
-  home-manager.users.derek.programs.git.ignores = [ "nohup.out" ];
-  home-manager.users.derek.programs.git.userEmail = "d.wan@icloud.com";
-  home-manager.users.derek.programs.git.userName = "Derek Wan";
+  home-manager.users.derek.programs.git = {
+    enable = true;
+    delta.enable = true;
+    includes = [
+      { path = "home/.config/git/config"; }
+      { path = "~/.config/git/config.local"; }
+    ];
+    ignores = [ "nohup.out" ];
+    userEmail = "d.wan@icloud.com";
+    userName = "Derek Wan";
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
