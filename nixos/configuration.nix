@@ -78,6 +78,7 @@
     fzf
     geany
     git
+    hyperfine
     nano
     oh-my-zsh
     ripgrep
