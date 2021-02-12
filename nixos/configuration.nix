@@ -195,6 +195,17 @@ in
 
 		lsd.enable = true;
 
+		neovim = {
+			enable = true;
+
+			extraPython3Packages = (ps: with ps; [ python-language-server ]);
+
+			plugins = with pkgs.vimPlugins; [
+				vim-nix
+				vim-startify
+			];
+		};
+
 		tmux = {
 			aggressiveResize = true;
 			baseIndex = 1;
