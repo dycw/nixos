@@ -32,6 +32,7 @@ alias lla="exa $_EXA_LONG_ARGS --all"
 alias lal='lla'
 
 # fd
+alias fd='fd -H'
 alias fdd='fd --type=directory'
 alias fde='fd --type=executable'
 alias fdf='fd --type=file'
