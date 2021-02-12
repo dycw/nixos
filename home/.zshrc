@@ -41,7 +41,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # git
 alias gap='git add -p'
-function gcm { git commit -m "$1" && git push; }
+unalias gcm; function gcm { git commit -m "$1" && git push; }
 alias gcop='git checkout -p'
 unalias gd; function gd { git diff ; if [ -n "$1" ]; then git add -A && git commit -m "$1" && git push; fi; } 
 function gdc { git diff --cached; if [ -n "$1" ]; then git commit -m "$1" && git push; fi; } 
