@@ -38,7 +38,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 alias gap='git add -p'
 alias gcm='git commit -m'
 alias gcop='git checkout -p'
-function gdc { git diff --cached; if [ -n "$1" ]; then git commif -m "$1"; fi; } 
+function gdc { git diff --cached; if [ -n "$1" ]; then git commit -m "$1"; fi; } 
 alias gs='git status -s'
 
 # nix-env
