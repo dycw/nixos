@@ -83,6 +83,7 @@
     oh-my-zsh
     ripgrep
     tealdeer
+    tokei
     tmux
     vim
     wget
