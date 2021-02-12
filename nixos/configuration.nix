@@ -25,6 +25,7 @@ in
   # home-manager
   home-manager.users.derek.programs.git.enable = true;
   home-manager.users.derek.programs.git.delta.enable = true;
+  home-manager.users.derek.programs.git.includes = [ "~/.config/git/config.local" ]
   home-manager.users.derek.programs.git.ignores = [ "nohup.out" ];
   home-manager.users.derek.programs.git.userEmail = "d.wan@icloud.com";
   home-manager.users.derek.programs.git.userName = "Derek Wan";
