@@ -39,6 +39,9 @@ in
       ignores = [ "nohup.out" ];
       userEmail = "d.wan@icloud.com";
       userName = "Derek Wan";
+      extraConfig = {
+        core.editor = "vim";
+      };
     };
     tmux = {
       aggressiveResize = true;
