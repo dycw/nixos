@@ -23,13 +23,10 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   # home-manager
-  home-manager.users.derek = {
-    programs.git = {
-      enable = true;
-      userName  = "Derek Wan";
-      userEmail = "d.wan@icloud.com";
-    };
-  };
+  home-manager.users.derek.programs.git.enable = true;
+  home-manager.users.derek.programs.git.delta.enable = true;
+  home-manager.users.derek.programs.git.userEmail = "d.wan@icloud.com";
+  home-manager.users.derek.programs.git.userName = "Derek Wan";
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -89,7 +86,6 @@ in
   environment.systemPackages = with pkgs; [
     bat
     curl
-    gitAndTools.delta
     direnv
     diskonaut
     dropbox-cli
