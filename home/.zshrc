@@ -55,6 +55,9 @@ alias gcop='git checkout -p'
 alias gdm='gd && gaa && gcm'
 alias gdc='gdca'
 alias gdcm='gdca && gcm'
+alias gl='glols'
+alias gll='glgp'
+alias gpl='git pull'
 alias gs='gss'
 
 # spotify
