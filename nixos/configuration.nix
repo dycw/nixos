@@ -84,6 +84,7 @@
     oh-my-zsh
     pdfarranger
     ripgrep
+    spotify
     tealdeer
     tokei
     tmux
