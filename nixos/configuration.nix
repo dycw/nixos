@@ -133,6 +133,7 @@
     # Customize your oh-my-zsh options here
     ZSH_THEME="robbyrussell"
     plugins=(
+      alias-finder
       direnv
       fd
       git
