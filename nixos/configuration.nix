@@ -91,7 +91,7 @@
 
     # Customize your oh-my-zsh options here
     ZSH_THEME="robbyrussell"
-    plugins=(git docker)
+    plugins=(git tmux)
 
     bindkey '\e[5~' history-beginning-search-backward
     bindkey '\e[6~' history-beginning-search-forward
