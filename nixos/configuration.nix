@@ -37,6 +37,7 @@ in
     };
     tmux = {
       enable = true;
+      shortcut = "a";
     };
   };
 
