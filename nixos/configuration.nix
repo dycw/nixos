@@ -191,6 +191,8 @@ in
 			enableMouse = true;
 		};
 
+		lf.enable = true;
+
 		tmux = {
 			aggressiveResize = true;
 			baseIndex = 1;
