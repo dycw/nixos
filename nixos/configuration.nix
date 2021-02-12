@@ -82,6 +82,7 @@
     git
     hyperfine
     micro
+    nodePackages.prettier
     nox
     oh-my-zsh
     pdfarranger
