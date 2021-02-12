@@ -186,6 +186,11 @@ in
 
 		home-manager.enable = true;
 
+		htop = {
+			enable = true;
+			enableMouse = true;
+		};
+
 		tmux = {
 			aggressiveResize = true;
 			baseIndex = 1;
