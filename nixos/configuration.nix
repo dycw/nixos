@@ -86,6 +86,7 @@
     tokei
     tmux
     vim
+    watchexec
     wget
     zoxide
     zsh
