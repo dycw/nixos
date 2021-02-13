@@ -382,7 +382,7 @@ in
 
     lsd.enable = true;
 
-        # https://github.com/NixOS/nixpkgs/issues/98166#issuecomment-725319238
+    # https://github.com/NixOS/nixpkgs/issues/98166#issuecomment-725319238
     neovim = {
       enable = true;
 
