@@ -442,26 +442,70 @@ in
     };
 
     tmux = {
-      aggressiveResize = true;
-      baseIndex = 1;
-      disableConfirmationPrompt = true;
       enable = true;
       extraConfig = ''
+        # server
+        set -g default-terminal "screen-256color"
+        set -g escape-time 1
+        set -g focus-events on
+        set -g history-limit 100000
+
+        # session
+        set -g base-index 1
+        set -g bell-action none
+        set -g display-panes-active-colour white
+        set -g display-panes-colour white
+        set -g display-panes-time 2000
+        set -g mouse on
+        set -g renumber-windows on
+        set -g repeat-time 250
+        set -g visual-activity off
+        set -g visual-bell off
+        set -g visual-silence off
+
+        # session: status
+        set -g status on
+        set -g status-interval 1
+        set -g status-justify left
+        set -g status-keys vi
+        set -g status-left ""
+        set -g status-left-length 0
+        set -g status-position bottom
+        set -g status-right "#(TZ=Asia/Hong_Kong date \"+%%Y-%%m-%%d %%H:%%M:%%S (%%a)\")"
+        set -g status-right-length 25
+        set -g status-style "bg=black"
+
+        # window: pane
+        set -g allow-rename off
+        set -g clock-mode-style 12
+        set -g main-pane-height 12
+        set -g mode-keys vi
+        set -g pane-active-border-style "fg=blue,bold,bg=default"
+        set -g pane-base-index 1
+        set -g pane-border-format ""
+        set -g pane-border-status top
+        set -g pane-border-style "fg=blue,bold,bg=default"
+        set -g window-active-style "fg=default,bg=default"
+        set -g window-size largest
+        set -g window-status-current-style "fg=default,bg=default"
+        set -g window-status-style "fg=default,bg=default"
+        set -g window-status-separator ""
+
+        # window status
+        set -g window-status-format ' #[fg=white,bold]#{window_index} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-1 | rev)#([ #{window_zoomed_flag} -eq 1 ] && echo " <Z>" || echo "") #[default]'
+        set -g window-status-current-format '#[fg=white,bold,bg=blue,bold] #{window_index} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-1 | rev)#([ #{window_zoomed_flag} -eq 1 ] && echo " <Z>" || echo "") #[default]'
+
+        # pane styles
+        set -g window-style "fg=default,bg=default"
+
         bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
-        set  -g mouse on
-        set  -g renumber-windows on
-        set  -g status-interval 1
-        set  -g status-left ""
-        set  -g status-right "#(TZ=Asia/Hong_Kong date \"+%%Y-%%m-%%d %%H:%%M:%%S (%%a)\")"
-        setw -g window-status-format ' #[fg=white,bold]#{window_index} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-1 | rev)#([ #{window_zoomed_flag} -eq 1  ] && echo " <Z>" || echo "") #[default]'
-        setw -g window-status-current-format '#[fg=white,bold,bg=blue,bold] #{window_index} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-1 | rev)#([ #{window_zoomed_flag} -eq 1  ] && echo " <Z>" || echo "") #[default]'
+
+        # bindings: preix
+        unbind C-b
+        set -g prefix `
+        bind ` send-prefix
       '';
-      historyLimit = 20000;
-      keyMode = "vi";
       plugins = with pkgs; [ tmuxPlugins.cpu ];
-      newSession = true;
-      shortcut = "a";
-      terminal = "screen-256color";
     };
 
     zathura.enable = true;
