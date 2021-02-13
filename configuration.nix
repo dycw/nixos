@@ -43,7 +43,7 @@ in
       # exa
       _exa_base = "exa --classify --group-directories-first";
       _exa_short = "_exa_base --across";
-      l=" _ exa_short --git-ignore";
+      l = "_exa_short --git-ignore";
       la = "_exa_short --all";
       _exa_long = "_exa_base --git --group --header --long --time-style=long-iso";
       ll = "_exa_long --git-ignore";
@@ -62,18 +62,18 @@ in
       gap = "gapa";
       gcd = "gco develop 2>/dev/null || gcb develop";
       gcm = "gcmsg";
-      gcom = "git checkout $(git_main_branch)";
+      gcom = "git checkout master";
       gcop = "gco -p";
       gdm = "gd && gaa && gcm";
       gdc = "gdca";
       gdcm = "gdca && gcm";
-      gl = "git log --format=\"%C(bold blue)%cd%Creset  %Cred%h%Creset  %Cgreen%d%Creset%n%s\" --graph --stat";
+      gl = ''git log --format="%C(bold blue)%cd%Creset  %Cred%h%Creset  %Cgreen%d%Creset%n%s" --graph --stat'';
       gll = "glgp";
       gpl = "git pull";
       gs = "gss";
 
       # path
-      echo-path = "echo $PATH | sed \"s/:/\n/g\"";
+      echo-path = ''echo $PATH | sed "s/:/\n/g"'';
 
       # spotify
       spotify = "nohup spotify &";
