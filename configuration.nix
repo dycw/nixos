@@ -395,9 +395,6 @@ in
         set number
         set relativenumber
 
-        " settings: pasting
-        set pastetoggle=<F2>
-
         " settings: read files automatically
         set autoread
 
@@ -435,6 +432,9 @@ in
         " mappings: normal mode
         imap jk <Esc>
         imap kj <Esc>
+
+        " settings: pasting
+        nnoremap <F2> :set pastetoggle<Bar>:set expandtabs<CR>
 
         " mappings: save
         nnoremap <C-s> :w<CR>
