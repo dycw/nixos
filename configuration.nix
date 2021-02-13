@@ -14,9 +14,13 @@ in
       (import "${home-manager}/nixos")
     ];
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
+  boot = {
+    cleanTmpDir = true;
+
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+    };
   };
 
   console = {
