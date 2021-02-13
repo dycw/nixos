@@ -268,43 +268,53 @@ in
         set number
         set relativenumber
 
+        " settings: pasting
+        set pastetoggle=<F11>
+
         " settings: read files automatically
         set autoread
+
+        " settings: scrolling
+        set scrolloff=5
+        set sidescrolloff=5
 
         " settings: substitute globally
         set gdefault
 
-        " settings: tabs
+        " settings: spaces and tabs
         set list
         set expandtab
         set shiftwidth=2
         set softtabstop=2
         set tabstop=2
 
+        " settings: tab pages
+        set showtabline=2
+
         " mappings: leader
         let mapleader=' '
 
-        " settings: command mode
+        " mappings: command mode
         nnoremap ; :
         vnoremap ; :
 
-        " settings: Ex mode disabled
+        " mappings: Ex mode disabled
         noremap Q <Nop>
 
-        " settings: normal mode
+        " mappings: normal mode
         imap jk <Esc>
         imap kj <Esc>
 
-        " settings: save
+        " mappings: save
         nnoremap <C-s> :w<CR>
         inoremap <C-s> <Esc>:w<CR>
         vnoremap <C-s> <Esc>:w<CR>
 
-        " settings: shift blocks visually (https://bit.ly/3tSsA9N)
+        " mappings: shift blocks visually (https://bit.ly/3tSsA9N)
         vnoremap > >gv
         vnoremap < <gv
 
-        " settings: quit
+        " mappings: quit
         nnoremap <C-q> :q<CR>
       '';
 
