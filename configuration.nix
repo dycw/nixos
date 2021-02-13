@@ -541,6 +541,11 @@ in
     };
   };
 
+  nix.gc = {
+    automatic = true;
+    dates = "03:00";
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   services = {
