@@ -541,9 +541,9 @@ in
     };
   };
 
-  nix.gc = {
-    automatic = true;
-    dates = "03:00";
+  nix = {
+    gc.automatic = true;
+    optimise.automatic = true;
   };
 
   nixpkgs.config.allowUnfree = true;
