@@ -550,6 +550,59 @@ in
 
   programs = {
     bandwhich.enable = true;
+
+    fish = {
+      enable = true;
+    };
+
+    nano.nanorc = ''
+      set nowrap
+      set tabstospaces
+      set tabsize 2
+    '';
+
+    # tmux @ home-manager
+
+    zsh = {
+      autosuggestions.enable = true;
+
+      enable = true;
+
+      histSize = 2000;
+
+      ohMyZsh = {
+        enable = true;
+
+        plugins = [
+          "alias-finder"
+          "direnv"
+          "fd"
+          "git"
+          "git-auto-fetch"
+          "ripgrep"
+          "tmux"
+          "vi-mode"
+          "zsh-interactive-cd"
+          "zsh_reload"
+        ];
+      };
+
+      setOptions = [
+        "EXTENDED_HISTORY"
+        "HIST_FCNTL_LOCK"
+        "HIST_IGNORE_ALL_DUPS"
+        "HIST_IGNORE_DUPS"
+        "INC_APPEND_HISTORY"
+        "RM_STAR_WAIT"
+        "SHARE_HISTORY"
+      ];
+
+      shellAliases = {
+        cat = "${pkgs.bat}/bin/bat";
+      };
+
+      syntaxHighlighting.enable = true;
+    };
   };
 
   services = {
@@ -568,7 +621,13 @@ in
 
   sound.enable = true;
 
-  system.stateVersion = "20.09";
+  system = {
+    autoUpgrade = {
+      allowReboot = true;
+      enable = true;
+    };
+    stateVersion = "20.09";
+  };
 
   systemd.user.services.dropbox = {
     after = [ "xembedsniproxy.service" ];
@@ -597,55 +656,13 @@ in
 
   time.timeZone = "Asia/Hong_Kong";
 
-  users.users.derek = {
-    description = "Derek Wan";
-    home = "/home/derek";
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    shell = pkgs.zsh;
+  users = {
+    defaultUserShell = pkgs.fish;
+    users.derek = {
+      description = "Derek Wan";
+      extraGroups = [ "wheel" ];
+      isNormalUser = true;
+      shell = pkgs.fish;
+    };
   };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  programs.zsh.enable = true;
-  programs.zsh.interactiveShellInit = ''
-    export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
-
-    # Customize your oh-my-zsh options here
-    ZSH_THEME="robbyrussell"
-    plugins=(
-      alias-finder
-      direnv
-      fd
-      git
-      git-auto-fetch
-      ripgrep
-      tmux
-      vi-mode
-      zsh-interactive-cd
-      zsh_reload
-    )
-
-    bindkey '\e[5~' history-beginning-search-backward
-    bindkey '\e[6~' history-beginning-search-forward
-
-    HISTFILESIZE=500000
-    HISTSIZE=500000
-    setopt SHARE_HISTORY
-    setopt HIST_IGNORE_ALL_DUPS
-    setopt HIST_IGNORE_DUPS
-    setopt INC_APPEND_HISTORY
-    autoload -U compinit && compinit
-    unsetopt menu_complete
-    setopt completealiases
-
-    if [ -f ~/.aliases ]; then
-      source ~/.aliases
-    fi
-
-    source $ZSH/oh-my-zsh.sh
-  '';
-  programs.zsh.promptInit = "";
-
-
 }
