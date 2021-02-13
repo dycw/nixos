@@ -332,6 +332,10 @@ in
           "zsh-interactive-cd"
           "zsh_reload"
         ];
+
+        shellAliases = {
+          cat = "${pkgs.bat}/bin/bat";
+        };
       };
     };
   };
