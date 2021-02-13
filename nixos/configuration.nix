@@ -25,7 +25,7 @@ in
   };
 
   environment = {
-    variables.EDITOR = "nvim";
+    pathsToLink = [ "/share/zsh" ];
 
     systemPackages = with pkgs; [
       curl
@@ -54,7 +54,9 @@ in
       watchexec
       wget
       zsh
-    ];
+    };
+
+    variables.EDITOR = "nvim";
   };
 
   hardware.pulseaudio.enable = true;
@@ -409,6 +411,4 @@ in
     source $ZSH/oh-my-zsh.sh
   '';
   programs.zsh.promptInit = "";
-
-
 }
