@@ -54,7 +54,7 @@ in
       watchexec
       wget
       zsh
-    };
+    ];
 
     variables.EDITOR = "nvim";
   };
@@ -300,6 +300,40 @@ in
       enable = true;
       enableZshIntegration = true;
     };
+
+    zsh = {
+      enable = true;
+
+      enableAutosuggestions = true;
+
+      autocd = true;
+
+      defaultKeymap = "viins";
+
+      history = {
+        expireDuplicatesFirst = true;
+        extended = true;
+        # path = "${config.xdg.dataHome}/zsh/zsh_history";
+        save = 100000;
+        size = 100000;
+      };
+
+      oh-my-zsh = {
+        enable = true;
+        plugins = [
+          "alias-finder"
+          "direnv"
+          "fd"
+          "git"
+          "git-auto-fetch"
+          "ripgrep"
+          "tmux"
+          "vi-mode"
+          "zsh-interactive-cd"
+          "zsh_reload"
+        ];
+      };
+    };
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -369,46 +403,4 @@ in
     extraGroups = [ "wheel" ];
     shell = pkgs.zsh;
   };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  programs.zsh.enable = true;
-  programs.zsh.interactiveShellInit = ''
-    export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
-
-    # Customize your oh-my-zsh options here
-    ZSH_THEME="robbyrussell"
-    plugins=(
-      alias-finder
-      direnv
-      fd
-      git
-      git-auto-fetch
-      ripgrep
-      tmux
-      vi-mode
-      zsh-interactive-cd
-      zsh_reload
-    )
-
-    bindkey '\e[5~' history-beginning-search-backward
-    bindkey '\e[6~' history-beginning-search-forward
-
-    HISTFILESIZE=500000
-    HISTSIZE=500000
-    setopt SHARE_HISTORY
-    setopt HIST_IGNORE_ALL_DUPS
-    setopt HIST_IGNORE_DUPS
-    setopt INC_APPEND_HISTORY
-    autoload -U compinit && compinit
-    unsetopt menu_complete
-    setopt completealiases
-
-    if [ -f ~/.aliases ]; then
-      source ~/.aliases
-    fi
-
-    source $ZSH/oh-my-zsh.sh
-  '';
-  programs.zsh.promptInit = "";
 }
