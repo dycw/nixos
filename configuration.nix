@@ -318,6 +318,21 @@ in
         vnoremap > >gv
         vnoremap < <gv
 
+        " mappings: windows
+        nnoremap <C-w>h     :set nosplitright<Bar>:vsplit<Bar>:set splitright<CR>
+        nmap     <C-w><C-h> <C-w>h
+        nnoremap <C-w>j     :split<CR>
+        nmap     <C-w><C-j> <C-w>j
+        nnoremap <C-w>k     :set nosplitbelow<Bar>:split<Bar>:set splitbelow<CR>
+        nmap     <C-w><C-k> <C-w>k
+        nnoremap <C-w>l     :vsplit<CR>
+        nmap     <C-w><C-l> <C-w>l
+        nnoremap <C-h>      <C-w>h
+        nnoremap <C-j>      <C-w><C-w>
+        nnoremap <C-k>      <C-w>W
+        nnoremap <C-l>      <C-w>l
+        nnoremap <C-w><C-w> <C-w>p
+
         " mappings: quit
         nnoremap <C-q> :q<CR>
       '';
