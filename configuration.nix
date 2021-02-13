@@ -34,6 +34,57 @@ in
   environment = {
     variables.EDITOR = "nvim";
 
+    shellAliases = {
+      # bat
+      cat = "bat";
+
+      # cd
+      cddf = "cd ~/dotfiles";
+      cddl = "cd ~/Downloads";
+      cdw = "cd ~/work";
+
+      # exa
+      _exa_base = "exa --classify --group-directories-first";
+      _exa_short = "_exa_base --across";
+      l=" _ exa_short --git-ignore";
+      la = "_exa_short --all";
+      _exa_long = "_exa_base --git --group --header --long --time-style=long-iso";
+      ll = "_exa_long --git-ignore";
+      lla = "_exa_long --all";
+      lal = "lla";
+
+      # fd
+      fd = "fd -H";
+      fdd = "fd -t=d";
+      fde = "fd -t=e";
+      fdf = "fd -t=f";
+      fds = "fd -t=s";
+
+      # git
+      gaac = "gaa && gc";
+      gap = "gapa";
+      gcd = "gco develop 2>/dev/null || gcb develop";
+      gcm = "gcmsg";
+      gcom = "git checkout $(git_main_branch)";
+      gcop = "gco -p";
+      gdm = "gd && gaa && gcm";
+      gdc = "gdca";
+      gdcm = "gdca && gcm";
+      gl = "git log --format=\"%C(bold blue)%cd%Creset  %Cred%h%Creset  %Cgreen%d%Creset%n%s\" --graph --stat";
+      gll = "glgp";
+      gpl = "git pull";
+      gs = "gss";
+
+      # path
+      echo-path = "echo $PATH | sed \"s/:/\n/g\"";
+
+      # spotify
+      spotify = "nohup spotify &";
+
+      # vim
+      v = "vim";
+    };
+
     systemPackages = with pkgs; [
       curl
       diskonaut
