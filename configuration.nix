@@ -302,7 +302,14 @@ in
       plugins = with pkgs.vimPlugins; [
         ale
 
-        fugitive
+        {
+          plugin = fugitive;
+          config = ''
+            nnoremap gd :Gdiff<CR>
+            nnoremap gs :Gstatus<CR>
+            nnoremap gp :Gpush<CR>
+          '';
+        }
 
         vim-airline
 
