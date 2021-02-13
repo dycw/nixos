@@ -28,6 +28,9 @@ in
     keyMap = "us";
   };
 
+
+  documentation.man.generateCaches = true;
+
   environment = {
     variables.EDITOR = "nvim";
 
