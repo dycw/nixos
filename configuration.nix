@@ -294,11 +294,14 @@ in
         " mappings: leader
         let mapleader=' '
 
+        " mappings: clear search highlights
+        nnoremap <Esc> :noh<return><Esc>
+
         " mappings: command mode
         nnoremap ; :
         vnoremap ; :
 
-        " mappings: Ex mode disabled
+        " mappings: ex mode disabled
         noremap Q <Nop>
 
         " mappings: normal mode
