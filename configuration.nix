@@ -302,6 +302,26 @@ in
         ale
 
         {
+          plugin = fzf-vim;
+          config = ''
+            nnoremap <Leader>b :Buffers<CR>
+            nnoremap <Leader>c :Commands<CR>
+            nnoremap <Leader>C :History<CR>
+            nnoremap <Leader>f :GFiles<CR>
+            nnoremap <Leader>F :Files<CR>
+            nnoremap <Leader>h :History<CR>
+            nnoremap <Leader>H :Helptags!<CR>
+            nnoremap <Leader>m :Marks<CR>
+            nnoremap <Leader>M :Maps<CR>
+            nnoremap <Leader>l :Rg<CR>
+            nnoremap <Leader>L :BLines<CR>
+            nnoremap <Leader>t :Tags<CR>
+            nnoremap <Leader>T :BTags<CR>
+            nnoremap <Leader>w :Windows<CR>
+          '';
+        }
+
+        {
           plugin = fugitive;
           config = ''
             nnoremap <Leader>ga :Git add %:p<CR>
@@ -316,11 +336,42 @@ in
 
         vim-devicons
 
+        vim-eunuch
+
         vim-lastplace
 
         vim-nix
 
-        vim-startify
+        vim-repeat
+
+        vim-sensible
+
+        {
+          plugin = vim-signify;
+          config = ''
+            highlight SignifySignAdd    ctermfg=green  guifg=#00ff00 cterm=NONE gui=NONE
+            highlight SignifySignDelete ctermfg=red    guifg=#ff0000 cterm=NONE gui=NONE
+            highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
+          '';
+        }
+
+        vim-speeddating
+
+        {
+          plugin = vim-startify;
+          config = ''
+            let g:startify_lists = [
+              \ { 'type': 'dir',       'header': ['MRU '. getcwd()] },
+              \ { 'type': 'files',     'header': ['MRU']            },
+              \ { 'type': 'sessions',  'header': ['Sessions']       },
+              \ { 'type': 'bookmarks', 'header': ['Bookmarks']      },
+              \ { 'type': 'commands',  'header': ['Commands']       },
+              \ ]
+            let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
+            let g:ascii = []
+            let g:startify_custom_header = ['Hello, Derek']
+          '';
+        }
 
         vim-surround
       ];
