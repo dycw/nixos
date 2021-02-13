@@ -295,7 +295,7 @@ in
         let mapleader=' '
 
         " mappings: clear search highlights
-        nnoremap <Esc> :noh<return><Esc>
+        nnoremap <Esc> :nohlsearch<return><Esc>
 
         " mappings: command mode
         nnoremap ; :
