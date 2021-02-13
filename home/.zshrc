@@ -16,61 +16,13 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# bat
-alias cat='bat'
-
-# cd
-alias cddf='cd ~/dotfiles'
-alias cddl='cd ~/Downloads'
-alias cdw='cd ~/work'
-
-# exa
-alias _exa_base='exa --classify --group-directories-first'
-alias _exa_short='_exa_base --across'
-alias l='_exa_short --git-ignore'
-alias la='_exa_short --all'
-alias _exa_long='_exa_base --git --group --header --long --time-style=long-iso'
-alias ll='_exa_long --git-ignore'
-alias lla='_exa_long --all'
-alias lal='lla'
-
-# fd
-alias fd='fd -H'
-alias fdd='fd -t=d'
-alias fde='fd -t=e'
-alias fdf='fd -t=f'
-alias fds='fd -t=s'
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# git
-alias gaac='gaa && gc'
-alias gap='gapa'
-alias gbclean='git branch --color=never --merged | grep -v master | sed ''s/^[ \t ]*//;s/[ \t ]*$//'' | xargs git branch -d'
-alias gcd='gco develop 2>/dev/null || gcb develop'
-alias gcm='gcmsg'
-alias gcom='git checkout $(git_main_branch)'
-alias gcop='gco -p'
-alias gdm='gd && gaa && gcm'
-alias gdc='gdca'
-alias gdcm='gdca && gcm'
-alias gl='git log --format="%C(bold blue)%cd%Creset  %Cred%h%Creset  %Cgreen%d%Creset%n%s" --graph --stat'
-alias gll='glgp'
-alias gpl='git pull'
-alias gs='gss'
-
-# path
-alias echo-path='echo $PATH | sed "s/:/\n/g"'
-
-# spotify
-alias spotify='nohup spotify &'
 
 # nix-env
 function nix-env-search() { nix-env -qaP '.*'"$1"'.*'; }
 
 # vim
-alias v='vim'
 stty start undef     # for <C-s>, <C-q>
 stty stop undef      # ...
 setopt noflowcontrol # ...
