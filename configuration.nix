@@ -28,7 +28,6 @@ in
     keyMap = "us";
   };
 
-
   documentation.man.generateCaches = true;
 
   environment = {
@@ -314,6 +313,8 @@ in
         vim-airline
 
         vim-devicons
+
+        vim-lastplace
 
         vim-nix
 
