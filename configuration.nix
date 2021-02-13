@@ -314,9 +314,13 @@ in
         inoremap <C-s> <Esc>:w<CR>
         vnoremap <C-s> <Esc>:w<CR>
 
-        " mappings: shift blocks visually (https://bit.ly/3tSsA9N)
+        " mappings: shift blocks visually
         vnoremap > >gv
         vnoremap < <gv
+
+        " mappings: substitute
+        vnoremap s :s/
+        vnoremap <C-r> "hy:,$s/<C-r>h//gc<Left><Left><Left>
 
         " mappings: windows
         nnoremap <C-w>h     :set nosplitright<Bar>:vsplit<Bar>:set splitright<CR>
