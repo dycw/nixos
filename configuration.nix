@@ -218,7 +218,6 @@ in
       hyperfine
       micro
       nox
-      oh-my-zsh
       pdfarranger
       pipenv
       ripgrep
@@ -231,7 +230,6 @@ in
       vim
       watchexec
       wget
-      zsh
 
       nodePackages.prettier
     ];
@@ -690,49 +688,6 @@ in
       set tabstospaces
       set tabsize 2
     '';
-
-    # tmux @ home-manager
-
-    zsh = {
-      autosuggestions.enable = true;
-
-      enable = true;
-
-      histSize = 2000;
-
-      ohMyZsh = {
-        enable = true;
-
-        plugins = [
-          "alias-finder"
-          "direnv"
-          "fd"
-          "git"
-          "git-auto-fetch"
-          "ripgrep"
-          "tmux"
-          "vi-mode"
-          "zsh-interactive-cd"
-          "zsh_reload"
-        ];
-      };
-
-      setOptions = [
-        "EXTENDED_HISTORY"
-        "HIST_FCNTL_LOCK"
-        "HIST_IGNORE_ALL_DUPS"
-        "HIST_IGNORE_DUPS"
-        "INC_APPEND_HISTORY"
-        "RM_STAR_WAIT"
-        "SHARE_HISTORY"
-      ];
-
-      shellAliases = {
-        cat = "${pkgs.bat}/bin/bat";
-      };
-
-      syntaxHighlighting.enable = true;
-    };
   };
 
   services = {
