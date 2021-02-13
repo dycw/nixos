@@ -304,7 +304,8 @@ in
         {
           plugin = fugitive;
           config = ''
-            nnoremap <Leader>ga :Gadd %:p<CR>
+            nnoremap <Leader>ga :Git add %:p<CR>
+            nnoremap <Leader>gc :Gcommit<CR>
             nnoremap <Leader>gd :Gdiff<CR>
             nnoremap <Leader>gs :Gstatus<CR>
             nnoremap <Leader>gp :Gpush<CR>
