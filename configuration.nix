@@ -247,15 +247,11 @@ in
   home-manager.users.derek.programs = {
     bat.enable = true;
 
-    broot = {
-      enable = true;
-      enableZshIntegration = true;
-    };
+    broot.enable = true;
 
     direnv = {
       enable = true;
       enableNixDirenvIntegration = true;
-      enableZshIntegration = true;
     };
 
     git = {
@@ -572,10 +568,7 @@ in
 
     rofi.enable = true;
 
-    starship = {
-      enable = true;
-      enableZshIntegration = true;
-    };
+    starship.enable = true;
 
     tmux = {
       enable = true;
@@ -650,10 +643,7 @@ in
 
     zathura.enable = true;
 
-    zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-    };
+    zoxide.enable = true;
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
