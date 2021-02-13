@@ -260,6 +260,8 @@ in
         vim-nix
 
         vim-startify
+
+        vim-surround
       ];
 
       viAlias = true;
