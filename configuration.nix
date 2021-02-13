@@ -31,8 +31,6 @@ in
   documentation.man.generateCaches = true;
 
   environment = {
-    variables.EDITOR = "nvim";
-
     shellAliases = {
       # bat
       cat = "bat";
@@ -112,6 +110,8 @@ in
       wget
       zsh
     ];
+
+    variables.EDITOR = "nvim";
   };
 
   hardware.pulseaudio.enable = true;
