@@ -135,8 +135,8 @@ in
       gmv = "git mv";
 
       # git: publish
-      gpb = "g pb";
-      gunpb = "g unpb";
+      gpb = "git pb";
+      gunpb = "git unpb";
 
       # git: pull
       gll = "git pull";
