@@ -244,6 +244,8 @@ in
       plugins = with pkgs.vimPlugins; [
         ale
 
+        fugitive
+
         vim-airline
 
         vim-devicons
