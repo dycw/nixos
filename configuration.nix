@@ -88,12 +88,11 @@ in
       dropbox-cli
       exa
       fd
-      geany
+      fzf
       git
       home-manager
       hyperfine
       micro
-      nodePackages.prettier
       nox
       oh-my-zsh
       pdfarranger
@@ -109,6 +108,8 @@ in
       watchexec
       wget
       zsh
+
+      nodePackages.prettier
     ];
 
     variables.EDITOR = "nvim";
