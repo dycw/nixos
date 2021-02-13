@@ -57,20 +57,144 @@ in
       fdf = "fd -t=f";
       fds = "fd -t=s";
 
-      # git
+      # git: add
+      ga = "git add";
+      gaa = "ga -A";
+      gai = "gaa -i";
+      gaip = "ga -ip";
+      gap = "ga -p";
+
+      # git: add + commit
       gaac = "gaa && gc";
-      gap = "gapa";
-      gcd = "gco develop 2>/dev/null || gcb develop";
-      gcm = "gcmsg";
-      gcom = "git checkout master";
+      gaacm = "gaa && gcm";
+      gac = "git ac";
+      gacm = "git acm";
+      gacnv = "git acnv";
+      gacnvm = "git acnvm";
+      gapc = "git apc";
+
+      # git: branch
+      gb = "git branch -vv";
+      gba = "gb -a";
+      gbd = "gb -d";
+      gbdd = "gb -D";
+      gbr = "gb -r";
+      gbu = "gb -u";
+
+      # git: branch + checkout
+      gdev = "g dev";
+
+      # git: checkout
+      gco = "git checkout";
+      gcob = "gco -b";
+      gcobmom = "gco -B master origin/master";
+      gcom = "gco master";
       gcop = "gco -p";
-      gdm = "gd && gaa && gcm";
-      gdc = "gdca";
-      gdcm = "gdca && gcm";
+
+      # git: checkout + pull
+      gcoml = "gcom && gll";
+
+      # git: checkout + pull + branch + checkout
+      gredev = "gcoml && gdev";
+
+      # git: cherry-pick
+      gcp = "git cherry-pick";
+      gcpa = "gcp --abort";
+      gcpc = "gcp --continue";
+      gcpq = "gcp --quit";
+      gcps = "gcp --skip";
+
+      # git: clone
+      gcl = "git clone --recurse-submodules";
+
+      # git: commit
+      gc = "git commit";
+      gcm = "gc -m";
+      gcnv = "gc --no-verify";
+      gcnvm = "gc --no-verify -m";
+
+      # git: config
+      gcon = "git config -l --show-origin";
+
+      # git: diff
+      gd = "git diff";
+      gdc = "gd --cached";
+      gdcm = "gd && gaacm";
+      gdccm = "gdc && gcm";
+
+      # git: fetch
+      gf = "git fetch -p --all";
+
+      # git: log
       gl = ''git log --format="%C(bold blue)%cd%Creset  %Cred%h%Creset  %Cgreen%d%Creset%n%s" --graph --stat'';
-      gll = "glgp";
-      gpl = "git pull";
-      gs = "gss";
+
+      # git: merge
+      gm = "git merge";
+
+      # git: mv
+      gmv = "git mv";
+
+      # git: publish
+      gpb = "g pb";
+      gunpb = "g unpb";
+
+      # git: pull
+      gll = "git pull";
+
+      # git: push
+      gp = "git push";
+      gpdo = "gp -d origin";
+      gpf = "gp -f";
+      gpn = "gp -n";
+      gpo = "gp origin";
+      gpot = "gpo --tags";
+      gpuo = "gp -u origin";
+
+      # git: rebase
+      grb = "git rebase";
+      grba = "grb --abort";
+      grbc = "grb --continue";
+      grbi = "grb -i";
+      grbm = "grb master";
+      grbs = "grb --skip";
+
+      # git: remote
+      gre =  "git remote";
+      gresu = "gre set-url";
+      greu = "gre update";
+
+      # git: reset
+      gr = "git reset";
+      grp = "gr -p";
+
+      # git: rev-parse
+      gcurrent = "git rev-parse --abbrev-ref HEAD";
+      groot = "git rev-parse --show-toplevel";
+
+      # git: revert
+      grv = "git revert";
+
+      # git: rm
+      grm = "git rm";
+      grmc = "grm --cached";
+
+      # git: stash
+      gst = "git stash";
+      gsta = "gst apply";
+      gstc = "gst clear";
+      gstd = "gst drop";
+      gstl = "gst list";
+      gstp = "gst pop";
+
+      # git: submodule
+      gsmurr = "git submodule update --recursive --remote";
+
+      # git: status
+      gs = "git status --short";
+
+      # git: tag
+      gta = "git ta";
+      gtd = "git td";
 
       # path
       echo-path = ''echo $PATH | sed "s/:/\n/g"'';
@@ -138,10 +262,16 @@ in
 
     git = {
       aliases = {
-        current = "rev-parse --abbrev-ref HEAD";
-        publish = "!git push --set-upstream origin $(git current) && :";
-        unpublish = "!git branch -r --color=never | fzf | sed -En 's/origin\\/(.*)/\\1/p' | xargs -n 1 git push --delete origin";
-        root = "rev-parse --show-toplevel";
+        ac = "!f() { for v in \"$@\"; do git a \"$GIT_PREFIX$v\"; done; git c; }; f";
+        acm = "!f() { i=0; for v in \"$@\"; do i=$(($i+1)); if [ $i -lt $# ]; then git a \"$GIT_PREFIX$v\"; else git cm \"$v\"; fi; done; }; f";
+        acnv = "!f() { for v in \"$@\"; do git a \"$GIT_PREFIX$v\"; done; git cnv; }; f";
+        acnvm = "!f() { i=0; for v in \"$@\"; do i=$(($i+1)); if [ $i -lt $# ]; then git a \"$GIT_PREFIX$v\"; else git cnvm \"$v\"; fi; done; }; f";
+        apc = "!f() { for v in \"$@\"; do git ap \"$GIT_PREFIX$v\"; done; git c; }; f";
+        dev = "(gbdd dev || true) && gcob dev";
+        pb = "!gpuo $(gcurrent) && :";
+        ta = "!git tag -a \"$1\" \"$2\" -m \"$1\" && :";
+        td = "!git tag --delete \"$1\" && :";
+        unpb = "!gbr --color=never | fzf | sed -En 's/origin\\/(.*)/\\1/p' | xargs -n 1 gpdo";
       };
 
       delta = {
