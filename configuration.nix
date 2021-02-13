@@ -304,10 +304,7 @@ in
 
         color.ui = "always";
 
-        core = {
-          editor = "vim";
-          eol = "lf";
-        };
+        core.eol = "lf";
 
         diff = {
           colorMoved = true;
