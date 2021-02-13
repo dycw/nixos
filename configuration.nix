@@ -284,6 +284,7 @@ in
         " settings: spaces and tabs
         set list
         set expandtab
+        set nosmarttab
         set shiftwidth=2
         set softtabstop=2
         set tabstop=2
