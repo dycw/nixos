@@ -304,9 +304,10 @@ in
         {
           plugin = fugitive;
           config = ''
-            nnoremap gd :Gdiff<CR>
-            nnoremap gs :Gstatus<CR>
-            nnoremap gp :Gpush<CR>
+            nnoremap <Leader>ga :Gadd %:p<CR>
+            nnoremap <Leader>gd :Gdiff<CR>
+            nnoremap <Leader>gs :Gstatus<CR>
+            nnoremap <Leader>gp :Gpush<CR>
           '';
         }
 
