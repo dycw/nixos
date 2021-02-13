@@ -226,6 +226,10 @@ in
         " disable Ex mode
         noremap Q <Nop>
 
+        " shift blocks visually (https://bit.ly/3tSsA9N)
+        vnoremap > >gv
+        vnoremap < <gv
+
         " command mode
         nnoremap ; :
 
