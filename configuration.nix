@@ -500,12 +500,13 @@ in
         # pane styles
         set -g window-style "fg=default,bg=default"
 
-        bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
-
         # bindings: prefix
         unbind C-b
         set -g prefix `
         bind ` send-prefix
+
+        # bindings: reload
+        bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
       '';
       plugins = with pkgs; [
         tmuxPlugins.cpu
