@@ -24,34 +24,38 @@ in
     keyMap = "us";
   };
 
-  environment.systemPackages = with pkgs; [
-    curl
-    diskonaut
-    dropbox-cli
-    exa
-    fd
-    geany
-    git
-    home-manager
-    hyperfine
-    micro
-    nodePackages.prettier
-    nox
-    oh-my-zsh
-    pdfarranger
-    pipenv
-    ripgrep
-    shellcheck
-    shfmt
-    signal-desktop
-    spotify
-    tealdeer
-    tokei
-    vim
-    watchexec
-    wget
-    zsh
-  ];
+  environment = {
+    variables.EDITOR = "nvim";
+
+    systemPackages = with pkgs; [
+      curl
+      diskonaut
+      dropbox-cli
+      exa
+      fd
+      geany
+      git
+      home-manager
+      hyperfine
+      micro
+      nodePackages.prettier
+      nox
+      oh-my-zsh
+      pdfarranger
+      pipenv
+      ripgrep
+      shellcheck
+      shfmt
+      signal-desktop
+      spotify
+      tealdeer
+      tokei
+      vim
+      watchexec
+      wget
+      zsh
+    ];
+  };
 
   hardware.pulseaudio.enable = true;
 
