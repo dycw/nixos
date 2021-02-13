@@ -199,6 +199,7 @@ in
       enable = true;
 
       extraConfig = ''
+        " settings
         set list
         set expandtab
         set number
@@ -207,13 +208,40 @@ in
         set shiftwidth=2
         set softtabstop=2
         set tabstop=2
+
+        " mappings
+        let mapleader=' '
+
+        " disable Ex mode
+        noremap Q <Nop>
+
+        " command mode
+        nnoremap ; :
+
+        " normal mode
+        imap jk <Esc>
+        imap kj <Esc>
+
+        " save
+        nnoremap <C-s> :w<CR>
+        inoremap <C-s> <Esc>:w<CR>
+        vnoremap <C-s> <Esc>:w<CR>
+
+        " quit
+        nnoremap <C-q> :q<CR>
       '';
 
       extraPython3Packages = (ps: with ps; [ python-language-server ]);
 
       plugins = with pkgs.vimPlugins; [
+        ale
+
         vim-airline
+
+        vim-devicons
+
         vim-nix
+
         vim-startify
       ];
 
