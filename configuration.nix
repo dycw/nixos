@@ -260,39 +260,51 @@ in
       enable = true;
 
       extraConfig = ''
-        " settings
+        " settings: casing
+        set ignorecase
+        set smartcase
+
+        " settings: line numbers
+        set number
+        set relativenumber
+
+        " settings: read files automatically
+        set autoread
+
+        " settings: substitute globally
+        set gdefault
+
+        " settings: tabs
         set list
         set expandtab
-        set number
-        set ignorecase
-        set relativenumber
         set shiftwidth=2
         set softtabstop=2
         set tabstop=2
 
-        " mappings
+        " mappings: leader
         let mapleader=' '
 
-        " disable Ex mode
+        " settings: command mode
+        nnoremap ; :
+        vnoremap ; :
+
+        " settings: Ex mode disabled
         noremap Q <Nop>
 
-        " shift blocks visually (https://bit.ly/3tSsA9N)
-        vnoremap > >gv
-        vnoremap < <gv
-
-        " command mode
-        nnoremap ; :
-
-        " normal mode
+        " settings: normal mode
         imap jk <Esc>
         imap kj <Esc>
 
-        " save
+        " settings: save
         nnoremap <C-s> :w<CR>
         inoremap <C-s> <Esc>:w<CR>
         vnoremap <C-s> <Esc>:w<CR>
 
-        " quit
+        " settings: shift blocks visually (https://bit.ly/3tSsA9N)
+        vnoremap > >gv
+        vnoremap < <gv
+
+        " settings: quit
         nnoremap <C-q> :q<CR>
       '';
 
