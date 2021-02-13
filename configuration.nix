@@ -235,7 +235,12 @@ in
       nodePackages.prettier
     ];
 
-    variables.EDITOR = "nvim";
+    variables = {
+      EDITOR = "nvim";
+
+      FZF_DEFAULT_COMMAND="fd -HL -t=f --exclude .git";
+      FZF_CTRL_T_OPTS="--preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'";
+    };
   };
 
   fonts.enableDefaultFonts = true;
