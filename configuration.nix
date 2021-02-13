@@ -504,6 +504,8 @@ in
           '';
         }
 
+        nerdcommenter
+
         vim-airline
 
         vim-devicons
