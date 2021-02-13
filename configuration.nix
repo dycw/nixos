@@ -269,7 +269,7 @@ in
         set relativenumber
 
         " settings: pasting
-        set pastetoggle=<F11>
+        set pastetoggle=<F2>
 
         " settings: read files automatically
         set autoread
