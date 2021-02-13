@@ -548,6 +548,10 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
+  programs = {
+    bandwhich.enable = true;
+  };
+
   services = {
     lorri.enable = true;
 
