@@ -227,6 +227,7 @@ in
       spotify
       tealdeer
       tokei
+      tree
       vim
       watchexec
       wget
