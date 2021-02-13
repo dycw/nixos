@@ -115,7 +115,12 @@ in
     variables.EDITOR = "nvim";
   };
 
-  hardware.pulseaudio.enable = true;
+  fonts.enableDefaultFonts = true;
+
+  hardware = {
+    bluetooth.enable = true;
+    pulseaudio.enable = true;
+  };
 
   home-manager.users.derek.programs = {
     bat.enable = true;
